@@ -1,0 +1,9 @@
+Change Component Footprint: Designator=J79 Old Footprint=TST-110-XX-Y-D New Footprint=HTST-110-01-XX-DV
+Change Component Comment : Designator=J79 Old Comment=TST-110-01-G-D New Comment=HTST-110-01-XX-DV
+Change component parameters: Designator = "J79" ("J79"); Footprint = "TST-110-XX-Y-D"; UniqueID = "\SAOUHBMG\OTRHYSCW" ("\SAOUHBMG\OTRHYSCW")
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "{'manufacturer': u'Samtec'}"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "HTST-110-01-XX-DV"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"

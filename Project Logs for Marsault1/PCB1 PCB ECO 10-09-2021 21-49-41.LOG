@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=+VBAT_MOTOR2 Pin=J84-01
+Removed Pin From Net: NetName=+VBAT_MOTOR2 Pin=J84-03
+Removed Pin From Net: NetName=+VBAT Pin=J84-37
+Removed Pin From Net: NetName=+VBAT Pin=J84-39
+Added Pin To Net: NetName=+VBAT Pin=J84-01
+Added Pin To Net: NetName=+VBAT Pin=J84-03
+Added Pin To Net: NetName=+VBAT_MOTOR2 Pin=J84-37
+Added Pin To Net: NetName=+VBAT_MOTOR2 Pin=J84-39

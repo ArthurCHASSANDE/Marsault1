@@ -1,0 +1,28 @@
+Added Component: Designator=J1(SAMTEC_TFM-120-02-L-D-WT-K-TR)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "{'manufacturer': u'Samtec'}"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "TFM-120-02-L-D-WT-K-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=J84(SAMTEC_TFM-120-02-L-D-WT-K-TR)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "{'manufacturer': u'Samtec'}"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "TFM-120-02-L-D-WT-K-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Member To Class: ClassName=MAIN Member=Component J1 TFM-120-02-L-D-WT-K-TR
+Added Member To Class: ClassName=MAIN Member=Component J84 TFM-120-02-L-D-WT-K-TR
+Added Room: Name=Buzzer
+Added Room: Name=FIN_COURSE
+Added Room: Name=MAIN
+Added Room: Name=MEMORIES
+Added Room: Name=MICROCONTROLLER
+Added Room: Name=MOTOR1
+Added Room: Name=MOTOR2
+Added Room: Name=MOTOR3
+Added Room: Name=MOTOR4
+Added Room: Name=POWER SUPPLIES
+Added Room: Name=RADIO
+Added Room: Name=SENSORS

@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=MISO_RADIO Pin=R53-2
+Removed Pin From Net: NetName=MISO_RADIO Pin=U11-17
+Removed Member From Class: ClassName=HF Member=MISO_RADIO
+Removed Member From Class: ClassName=HF Member=NetR53_1
+Added Pin To Net: NetName=MISO_RADIO Pin=R53-1
+Added Pin To Net: NetName=MISO_RADIO Pin=U4-75
+Added Pin To Net: NetName=NetR53_2 Pin=R53-2
+Added Pin To Net: NetName=NetR53_2 Pin=U11-17
+Added Net: Name=NetR53_2
+Added Member To Class: ClassName=HF Member=Wire NetR53_2

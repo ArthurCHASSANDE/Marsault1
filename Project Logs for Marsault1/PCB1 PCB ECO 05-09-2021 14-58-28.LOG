@@ -1,0 +1,19 @@
+Change Net Name : Old Net Name=NetC70_1 New Net Name=TH1_N
+Change Net Name : Old Net Name=NetC70_2 New Net Name=TH1_P
+Change Net Name : Old Net Name=NetC71_1 New Net Name=TH2_N
+Change Net Name : Old Net Name=NetC71_2 New Net Name=TH2_P
+Added Differential Pair: Name=TH1
+Added Differential Pair: Name=TH2
+Added Room: Name=Buzzer
+Added Room: Name=FIN_COURSE
+Added Room: Name=MAIN
+Added Room: Name=MEMORIES
+Added Room: Name=MICROCONTROLLER
+Added Room: Name=MOTOR1
+Added Room: Name=MOTOR2
+Added Room: Name=MOTOR3
+Added Room: Name=MOTOR4
+Added Room: Name=POWER SUPPLIES
+Added Room: Name=RADIO
+Added Room: Name=SENSORS
+Added Class: Name=TH

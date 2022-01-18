@@ -1,0 +1,41 @@
+Removed Pin From Net: NetName=GND Pin=J65-1
+Removed Pin From Net: NetName=HOT_R_MOTOR1 Pin=J66_MOTOR1-1
+Removed Pin From Net: NetName=HOT_L_MOTOR1 Pin=J66_MOTOR1-2
+Removed Pin From Net: NetName=HOT_R_MOTOR2 Pin=J66_MOTOR2-1
+Removed Pin From Net: NetName=HOT_L_MOTOR2 Pin=J66_MOTOR2-2
+Removed Pin From Net: NetName=HOT_R_MOTOR3 Pin=J66_MOTOR3-1
+Removed Pin From Net: NetName=HOT_L_MOTOR3 Pin=J66_MOTOR3-2
+Removed Pin From Net: NetName=HOT_R_MOTOR4 Pin=J66_MOTOR4-1
+Removed Pin From Net: NetName=HOT_L_MOTOR4 Pin=J66_MOTOR4-2
+Removed Pin From Net: NetName=TH1_P Pin=J80-1
+Removed Pin From Net: NetName=TH1_N Pin=J80-2
+Removed Pin From Net: NetName=TH2_P Pin=J81-1
+Removed Pin From Net: NetName=TH2_N Pin=J81-2
+Removed Member From Class: ClassName=SENSORS Member=J65
+Removed Member From Class: ClassName=MOTOR1 Member=J66_MOTOR1
+Removed Member From Class: ClassName=MOTOR2 Member=J66_MOTOR2
+Removed Member From Class: ClassName=MOTOR3 Member=J66_MOTOR3
+Removed Member From Class: ClassName=MOTOR4 Member=J66_MOTOR4
+Removed Member From Class: ClassName=SENSORS Member=J80
+Removed Member From Class: ClassName=SENSORS Member=J81
+Added Pin To Net: NetName=HOT_R_MOTOR2 Pin=J1-02
+Added Pin To Net: NetName=HOT_L_MOTOR2 Pin=J1-04
+Added Pin To Net: NetName=HOT_R_MOTOR4 Pin=J1-08
+Added Pin To Net: NetName=HOT_L_MOTOR4 Pin=J1-10
+Added Pin To Net: NetName=HOT_R_MOTOR1 Pin=J1-32
+Added Pin To Net: NetName=HOT_L_MOTOR1 Pin=J1-34
+Added Pin To Net: NetName=HOT_R_MOTOR3 Pin=J1-38
+Added Pin To Net: NetName=HOT_L_MOTOR3 Pin=J1-40
+Added Pin To Net: NetName=TH1_N Pin=J84-21
+Added Pin To Net: NetName=TH1_P Pin=J84-23
+Added Pin To Net: NetName=TH2_N Pin=J84-27
+Added Pin To Net: NetName=TH2_P Pin=J84-29
+Added Pin To Net: NetName=AERO_CON Pin=R106-1
+Added Pin To Net: NetName=AERO_CON Pin=R107-2
+Change Net Name : Old Net Name=TH1_N New Net Name=TH1_CON_N
+Change Net Name : Old Net Name=TH1_P New Net Name=TH1_CON_P
+Change Net Name : Old Net Name=TH2_N New Net Name=TH2_CON_N
+Change Net Name : Old Net Name=TH2_P New Net Name=TH2_CON_P
+Added Differential Pair: Name=TH1_CON
+Added Differential Pair: Name=TH2_CON
+Added Class: Name=TH

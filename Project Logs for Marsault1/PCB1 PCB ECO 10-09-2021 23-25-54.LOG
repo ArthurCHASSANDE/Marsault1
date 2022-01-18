@@ -1,0 +1,4 @@
+Added Member To Class: ClassName=HF Member=Wire \CS_RADIO
+Added Member To Class: ClassName=HF Member=Wire MISO_RADIO
+Added Member To Class: ClassName=HF Member=Wire MOSI_RADIO
+Added Member To Class: ClassName=HF Member=Wire SCK_RADIO

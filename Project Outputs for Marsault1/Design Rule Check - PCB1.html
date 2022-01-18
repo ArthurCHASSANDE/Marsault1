@@ -1,0 +1,974 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Logiciels\Alitum Shared\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">18/01/2022</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">20:43:24</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc">C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">186</td></tr>
+</table>
+</td>
+</table><a name="IDUYLTPPUNIDX0PXUVIQWK3NKG3CEB3DB015IVZLC4M315Z0XY5AUP"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMOHCGX2ANXZSMDTHEW52IOT5DHWMRII4FHCRJ4IPKOLAYCDZ1PXO">Clearance Constraint (Gap=11.811mil) (All),(All)</a></td>
+<td class="column2">46</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3PYWW23QMJJSFEK4PVDZ2KCTNDNZSCOESWMQ1BBNM4PQECCNRFIJ">Clearance Constraint (Gap=11.811mil) (InNetClass('HF')),(All)</a></td>
+<td class="column2">40</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJOQDYYRLMCODP3FGTB5VUTCKYMU4DOSBZ3M5FKMK053RD1KYBPWL">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXURQAIY3FM23JMQDGIOEE1RNQP3O0S1HNBOPLPI4QRTXUCHC2G3P">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWISIQBWVN5LUKOG5H51YQHS0ROEV5F1DNEOBB4CQ1VEK2ZVZSFSC">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZYN4POMD2XRGNVDYS1QKG5DMMLIOVLNC4UZQJTLOG1EWKVBGF0XL">Width Constraint (Min=6.156mil) (Max=6.269mil) (Preferred=6.269mil) (InNetClass('HF'))</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5XZVUOSMJSXBO0LVTWHESYY0AN0J0NQJGWRGX1GYXUUZMD32LBBB">Width Constraint (Min=10mil) (Max=30mil) (Preferred=30mil) (InNetClass('PWR'))</a></td>
+<td class="column2">65</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCARQRSYFHQ4ODSKQRJYU4UWAFDHHBP4KLQ32OYIBMH1ILJUPKLIE">Width Constraint (Min=3.5mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUGM40EIFSUQRJ1CY43EASIF5VEWVZUT5RTVMMU2JRYBMFCFM4EO">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID50P0NBAJUZ14PQHZPWXSVQUJKGZCRHXD1R3UDBF01HTMJQZMYKL">Hole Size Constraint (Min=7.874mil) (Max=248.031mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDR4RTOIS0YWZ3KXUYBG0F52IOAE1DAHC0OKCELECX0SUNIACNBF0N">Hole To Hole Clearance (Gap=19.685mil) (All),(All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCPOLZPK2BPKTOLT2Q5GFMDTZ3DUW1UTM1TTG45MOYM5TYSL25AFG">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXIIMTSJRENQHC3CRFF3QVLSP0J0WKXYC0F0VLAEUV55A0IFPLIXJ">Board Clearance Constraint (Gap=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRV25WDIC4MHGHZZ0TWCQGBE3GG23XKS5TPVQXOFLWLGOPPZ01TUE">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_U11_U4_MatchLengthsClass_2'))</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY1ZVVSRN3J02EC3VWB0DDIJONVVCSIWAWNMX0DLENSQLP0EMMGH">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_U11_U4_MatchLengthsClass_1'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFY1YILOHFP1EDWTUGSEUPQA3QDB5JECQRVW0FFEACVB3TNKPGZKP">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_U4_U5_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKJQ5UYNCOPULOJCS2ETP1IO4OHKDARQVCZ4VCQBPU3OEEBQOFPZ">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_U4_U3_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJ13WN5BPPDURNEFQSCHDIPX55DGQHIJ3KBL5C0KAJUGZROH1UCHO">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_SD_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUSZEKUQPGS1HEQADJNEO12H12LRGOKQJEKCZFPKURI1LWFEPI1QH">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_P1_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMWCUGGNML5GHKQL0D0UQSN3XLJ0GBY1AMXJBTWJJRHXT2CJDL2SJ">Matched Lengths(Tolerance=50mil) (InxSignalClass('xSignals_U3_Passives_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDHRH3FFXGVLBC12VLVJRS0XIZGTVRCP1E0CRETB5RJDOQWREFVZM">Matched Lengths(Tolerance=78.74mil) (InxSignalClass('xSignals_U2_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRFVQXMJ5GI0VKWJAFIXDZFFB5DSG53SPZJ2EMGEP2YJ4WBOD1ALD">Matched Lengths(Tolerance=50mil) (InxSignalClass('xSignals_U3_Passives_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEQH4ZUOVYRXM3WHDJ2AJJETDLU0T4LY0XNSULDC3Z3RVX30FW2G">Matched Lengths(Tolerance=78.74mil) (InxSignalClass('xSignals_SD1_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLKUM4DNWQ3EKMXBXYW3GAAQGNMPLCB032FGOPLNLLYVB4HZZFS1F">Matched Lengths(Delay Tolerance=50ps) (InxSignalClass('xSignals_U3_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKZ43BBNLTAIYNZ5RJFVSKLPWACERQOWQ0YKP0YBRA32E4SW4LUO">Matched Lengths(Tolerance=78.74mil) (InxSignalClass('xSignals_U11_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJPK2TRQGIOKFGMVVSPHBRQZ5KE3320PGGYBIOYOOKST5HKHZUKTF">Matched Lengths(Tolerance=78.74mil) (InxSignalClass('xSignals_J79_U4_MatchLengthsClass'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDM2VTHRHYUNOIMB5SDA55ZDPYBGGKZPMGFKVVSCDIPMVK3HEBW3MK">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">186</td>
+</tr>
+</table><br><a name="IDMOHCGX2ANXZSMDTHEW52IOT5DHWMRII4FHCRJ4IPKOLAYCDZ1PXO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=11.811mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6758.41mil|Location2.X=6767.534mil|Location1.Y=2788.666mil|Location2.Y=2797.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6758.41mil|Location2.X=6767.534mil|Location1.Y=2788.666mil|Location2.Y=2797.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-4(5220.315mil,864.528mil) on Bottom Layer And Track (5204.567mil,864.528mil)(5204.567mil,894.142mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2769.966mil|Location2.Y=2779.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2769.966mil|Location2.Y=2779.09mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-4(5220.315mil,864.528mil) on Bottom Layer And Track (5236.063mil,864.528mil)(5237.126mil,865.591mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.587mil|Location2.X=6794.711mil|Location1.Y=2748.083mil|Location2.Y=2757.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.587mil|Location2.X=6794.711mil|Location1.Y=2748.083mil|Location2.Y=2757.207mil|Absolute=True">Clearance Constraint: (6.371mil &lt; 7.874mil) Between Pad IC6_MOTOR1-5(5236.063mil,864.528mil) on Bottom Layer And Track (5240.532mil,834.468mil)(5300.807mil,834.468mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.438mil|Location2.X=6794.562mil|Location1.Y=2748.351mil|Location2.Y=2757.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.438mil|Location2.X=6794.562mil|Location1.Y=2748.351mil|Location2.Y=2757.475mil|Absolute=True">Clearance Constraint: (5.827mil &lt; 7.874mil) Between Pad IC6_MOTOR1-5(5236.063mil,864.528mil) on Bottom Layer And Track (5240mil,835mil)(5240.532mil,834.468mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.575mil|Location2.X=6794.699mil|Location1.Y=2732.262mil|Location2.Y=2741.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.575mil|Location2.X=6794.699mil|Location1.Y=2732.262mil|Location2.Y=2741.386mil|Absolute=True">Clearance Constraint: (5.309mil &lt; 7.874mil) Between Pad IC6_MOTOR1-7(5236.063mil,805.472mil) on Bottom Layer And Track (5240.532mil,834.468mil)(5300.807mil,834.468mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.575mil|Location2.X=6794.699mil|Location1.Y=2732.262mil|Location2.Y=2741.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6785.575mil|Location2.X=6794.699mil|Location1.Y=2732.262mil|Location2.Y=2741.386mil|Absolute=True">Clearance Constraint: (5.309mil &lt; 7.874mil) Between Pad IC6_MOTOR1-7(5236.063mil,805.472mil) on Bottom Layer And Track (5240mil,835mil)(5240.532mil,834.468mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6758.41mil|Location2.X=6767.534mil|Location1.Y=2692.21mil|Location2.Y=2701.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6758.41mil|Location2.X=6767.534mil|Location1.Y=2692.21mil|Location2.Y=2701.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-8(5220.315mil,805.472mil) on Bottom Layer And Track (5204.567mil,760.433mil)(5204.567mil,805.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2698.273mil|Location2.Y=2707.396mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2698.273mil|Location2.Y=2707.396mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-8(5220.315mil,805.472mil) on Bottom Layer And Track (5236.063mil,792.835mil)(5236.063mil,805.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2698.273mil|Location2.Y=2707.396mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6773.095mil|Location2.X=6782.219mil|Location1.Y=2698.273mil|Location2.Y=2707.396mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-8(5220.315mil,805.472mil) on Bottom Layer And Track (5236.063mil,792.835mil)(5237.126mil,791.771mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4872.347mil|Location2.X=4881.471mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4872.347mil|Location2.X=4881.471mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-4(3334.252mil,620mil) on Top Layer And Track (3318.504mil,586.299mil)(3318.504mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.032mil|Location2.X=4896.156mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.032mil|Location2.X=4896.156mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-4(3334.252mil,620mil) on Top Layer And Track (3350mil,585.576mil)(3350mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.636mil|Location2.X=4908.76mil|Location1.Y=2546.535mil|Location2.Y=2555.659mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.636mil|Location2.X=4908.76mil|Location1.Y=2546.535mil|Location2.Y=2555.659mil|Absolute=True">Clearance Constraint: (4.821mil &lt; 7.874mil) Between Pad IC6_MOTOR2-5(3350mil,620mil) on Top Layer And Track (3353.937mil,649.528mil)(3355mil,648.465mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.636mil|Location2.X=4908.76mil|Location1.Y=2546.535mil|Location2.Y=2555.659mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.636mil|Location2.X=4908.76mil|Location1.Y=2546.535mil|Location2.Y=2555.659mil|Absolute=True">Clearance Constraint: (4.821mil &lt; 7.874mil) Between Pad IC6_MOTOR2-5(3350mil,620mil) on Top Layer And Track (3355mil,648.465mil)(3405.945mil,648.465mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.375mil|Location2.X=4908.499mil|Location1.Y=2562.879mil|Location2.Y=2572.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.375mil|Location2.X=4908.499mil|Location1.Y=2562.879mil|Location2.Y=2572.003mil|Absolute=True">Clearance Constraint: (5.827mil &lt; 7.874mil) Between Pad IC6_MOTOR2-7(3350mil,679.055mil) on Top Layer And Track (3353.937mil,649.528mil)(3355mil,648.465mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.684mil|Location2.X=4908.808mil|Location1.Y=2562.338mil|Location2.Y=2571.461mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.684mil|Location2.X=4908.808mil|Location1.Y=2562.338mil|Location2.Y=2571.461mil|Absolute=True">Clearance Constraint: (6.937mil &lt; 7.874mil) Between Pad IC6_MOTOR2-7(3350mil,679.055mil) on Top Layer And Track (3355mil,648.465mil)(3405.945mil,648.465mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4872.347mil|Location2.X=4881.471mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4872.347mil|Location2.X=4881.471mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-8(3334.252mil,679.055mil) on Top Layer And Track (3318.504mil,679.055mil)(3318.504mil,708.504mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.505mil|Location2.X=4896.629mil|Location1.Y=2585.438mil|Location2.Y=2594.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.505mil|Location2.X=4896.629mil|Location1.Y=2585.438mil|Location2.Y=2594.562mil|Absolute=True">Clearance Constraint: (7.756mil &lt; 7.874mil) Between Pad IC6_MOTOR2-8(3334.252mil,679.055mil) on Top Layer And Track (3350.945mil,680mil)(3365mil,680mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.032mil|Location2.X=4896.156mil|Location1.Y=2584.493mil|Location2.Y=2593.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.032mil|Location2.X=4896.156mil|Location1.Y=2584.493mil|Location2.Y=2593.617mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-8(3334.252mil,679.055mil) on Top Layer And Track (3350mil,679.055mil)(3350.945mil,680mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-4(5159.252mil,1700.472mil) on Bottom Layer And Track (5143.504mil,1629.988mil)(5143.504mil,1700.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6712.033mil|Location2.X=6721.157mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6712.033mil|Location2.X=6721.157mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-4(5159.252mil,1700.472mil) on Bottom Layer And Track (5175mil,1666.772mil)(5175mil,1700.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.924mil|Location2.X=6694.048mil|Location1.Y=3627.673mil|Location2.Y=3636.797mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.924mil|Location2.X=6694.048mil|Location1.Y=3627.673mil|Location2.Y=3636.797mil|Absolute=True">Clearance Constraint: (6.126mil &lt; 7.874mil) Between Pad IC6_MOTOR3-5(5143.504mil,1700.472mil) on Bottom Layer And Track (5045.295mil,1730.295mil)(5139.272mil,1730.295mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6685.005mil|Location2.X=6694.129mil|Location1.Y=3627.525mil|Location2.Y=3636.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6685.005mil|Location2.X=6694.129mil|Location1.Y=3627.525mil|Location2.Y=3636.649mil|Absolute=True">Clearance Constraint: (5.827mil &lt; 7.874mil) Between Pad IC6_MOTOR3-5(5143.504mil,1700.472mil) on Bottom Layer And Track (5139.272mil,1730.295mil)(5139.567mil,1730mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.927mil|Location2.X=6694.051mil|Location1.Y=3643.498mil|Location2.Y=3652.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.927mil|Location2.X=6694.051mil|Location1.Y=3643.498mil|Location2.Y=3652.622mil|Absolute=True">Clearance Constraint: (5.536mil &lt; 7.874mil) Between Pad IC6_MOTOR3-7(5143.504mil,1759.528mil) on Bottom Layer And Track (5045.295mil,1730.295mil)(5139.272mil,1730.295mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.927mil|Location2.X=6694.051mil|Location1.Y=3643.498mil|Location2.Y=3652.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6684.927mil|Location2.X=6694.051mil|Location1.Y=3643.498mil|Location2.Y=3652.622mil|Absolute=True">Clearance Constraint: (5.536mil &lt; 7.874mil) Between Pad IC6_MOTOR3-7(5143.504mil,1759.528mil) on Bottom Layer And Track (5139.272mil,1730.295mil)(5139.567mil,1730mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3677.603mil|Location2.Y=3686.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3677.603mil|Location2.Y=3686.727mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-8(5159.252mil,1759.528mil) on Bottom Layer And Track (5142.441mil,1773.228mil)(5143.504mil,1772.165mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3664.966mil|Location2.Y=3674.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6697.347mil|Location2.X=6706.471mil|Location1.Y=3664.966mil|Location2.Y=3674.09mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-8(5159.252mil,1759.528mil) on Bottom Layer And Track (5143.504mil,1759.528mil)(5143.504mil,1772.165mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6712.033mil|Location2.X=6721.157mil|Location1.Y=3683.666mil|Location2.Y=3692.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6712.033mil|Location2.X=6721.157mil|Location1.Y=3683.666mil|Location2.Y=3692.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-8(5159.252mil,1759.528mil) on Bottom Layer And Track (5175mil,1759.528mil)(5175mil,1802.559mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.843mil|Location2.X=4922.967mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.843mil|Location2.X=4922.967mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-4(3375.748mil,1590.472mil) on Top Layer And Track (3360mil,1560mil)(3360mil,1590.472mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-4(3375.748mil,1590.472mil) on Top Layer And Track (3391.496mil,1561.3mil)(3391.496mil,1590.472mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.871mil|Location2.X=4949.995mil|Location1.Y=3517.525mil|Location2.Y=3526.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.871mil|Location2.X=4949.995mil|Location1.Y=3517.525mil|Location2.Y=3526.649mil|Absolute=True">Clearance Constraint: (5.827mil &lt; 7.874mil) Between Pad IC6_MOTOR4-5(3391.496mil,1590.472mil) on Top Layer And Track (3395.433mil,1620mil)(3395.728mil,1620.295mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.952mil|Location2.X=4950.076mil|Location1.Y=3517.673mil|Location2.Y=3526.797mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.952mil|Location2.X=4950.076mil|Location1.Y=3517.673mil|Location2.Y=3526.797mil|Absolute=True">Clearance Constraint: (6.126mil &lt; 7.874mil) Between Pad IC6_MOTOR4-5(3391.496mil,1590.472mil) on Top Layer And Track (3395.728mil,1620.295mil)(3449.705mil,1620.295mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.949mil|Location2.X=4950.073mil|Location1.Y=3533.498mil|Location2.Y=3542.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.949mil|Location2.X=4950.073mil|Location1.Y=3533.498mil|Location2.Y=3542.622mil|Absolute=True">Clearance Constraint: (5.536mil &lt; 7.874mil) Between Pad IC6_MOTOR4-7(3391.496mil,1649.528mil) on Top Layer And Track (3395.433mil,1620mil)(3395.728mil,1620.295mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.949mil|Location2.X=4950.073mil|Location1.Y=3533.498mil|Location2.Y=3542.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4940.949mil|Location2.X=4950.073mil|Location1.Y=3533.498mil|Location2.Y=3542.622mil|Absolute=True">Clearance Constraint: (5.536mil &lt; 7.874mil) Between Pad IC6_MOTOR4-7(3391.496mil,1649.528mil) on Top Layer And Track (3395.728mil,1620.295mil)(3449.705mil,1620.295mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.843mil|Location2.X=4922.967mil|Location1.Y=3573.666mil|Location2.Y=3582.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.843mil|Location2.X=4922.967mil|Location1.Y=3573.666mil|Location2.Y=3582.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-8(3375.748mil,1649.528mil) on Top Layer And Track (3360mil,1649.528mil)(3360mil,1674.624mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3554.966mil|Location2.Y=3564.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3554.966mil|Location2.Y=3564.09mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-8(3375.748mil,1649.528mil) on Top Layer And Track (3391.496mil,1649.528mil)(3391.496mil,1662.165mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3567.603mil|Location2.Y=3576.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.529mil|Location2.X=4937.653mil|Location1.Y=3567.603mil|Location2.Y=3576.727mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-8(3375.748mil,1649.528mil) on Top Layer And Track (3391.496mil,1662.165mil)(3415mil,1685.669mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.516mil|Location2.X=2688.64mil|Location1.Y=2911.694mil|Location2.Y=2920.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.516mil|Location2.X=2688.64mil|Location1.Y=2911.694mil|Location2.Y=2920.818mil|Absolute=True">Clearance Constraint: (7.795mil &lt; 7.874mil) Between Pad U2-14(1144.865mil,1016.914mil) on Top Layer And Track (1125.09mil,1006.166mil)(1125.18mil,1006.256mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.516mil|Location2.X=2688.64mil|Location1.Y=2911.694mil|Location2.Y=2920.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.516mil|Location2.X=2688.64mil|Location1.Y=2911.694mil|Location2.Y=2920.818mil|Absolute=True">Clearance Constraint: (7.795mil &lt; 7.874mil) Between Pad U2-14(1144.865mil,1016.914mil) on Top Layer And Track (1125.18mil,1006.256mil)(1125.18mil,1016.914mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=2938.55mil|Location2.Y=2947.674mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=2938.55mil|Location2.Y=2947.674mil|Absolute=True">Clearance Constraint: (6.835mil &lt; 7.874mil) Between Pad U2-17(1203.92mil,1016.914mil) on Top Layer And Track (1222.542mil,1034.219mil)(1222.542mil,1039.137mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=2938.55mil|Location2.Y=2947.674mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=2938.55mil|Location2.Y=2947.674mil|Absolute=True">Clearance Constraint: (6.835mil &lt; 7.874mil) Between Pad U2-17(1203.92mil,1016.914mil) on Top Layer And Track (1222.542mil,1034.219mil)(1223.605mil,1033.157mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.146mil|Location2.X=2769.27mil|Location1.Y=2938.1mil|Location2.Y=2947.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.146mil|Location2.X=2769.27mil|Location1.Y=2938.1mil|Location2.Y=2947.224mil|Absolute=True">Clearance Constraint: (7.795mil &lt; 7.874mil) Between Pad U2-17(1203.92mil,1016.914mil) on Top Layer And Track (1223.605mil,1016.914mil)(1223.605mil,1033.157mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=3063.635mil|Location2.Y=3072.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=3063.635mil|Location2.Y=3072.759mil|Absolute=True">Clearance Constraint: (6.835mil &lt; 7.874mil) Between Pad U2-2(1203.92mil,1174.395mil) on Top Layer And Track (1222.542mil,1152.172mil)(1222.542mil,1157.089mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=3063.635mil|Location2.Y=3072.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2759.636mil|Location2.X=2768.76mil|Location1.Y=3063.635mil|Location2.Y=3072.759mil|Absolute=True">Clearance Constraint: (6.835mil &lt; 7.874mil) Between Pad U2-2(1203.92mil,1174.395mil) on Top Layer And Track (1222.542mil,1157.089mil)(1223.605mil,1158.152mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.146mil|Location2.X=2769.27mil|Location1.Y=3064.084mil|Location2.Y=3073.209mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2760.146mil|Location2.X=2769.27mil|Location1.Y=3064.084mil|Location2.Y=3073.209mil|Absolute=True">Clearance Constraint: (7.795mil &lt; 7.874mil) Between Pad U2-2(1203.92mil,1174.395mil) on Top Layer And Track (1223.605mil,1158.152mil)(1223.605mil,1174.395mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2642.075mil|Location2.X=2651.199mil|Location1.Y=3039.518mil|Location2.Y=3048.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2642.075mil|Location2.X=2651.199mil|Location1.Y=3039.518mil|Location2.Y=3048.642mil|Absolute=True">Clearance Constraint: (7.795mil &lt; 7.874mil) Between Pad U2-7(1096.637mil,1144.867mil) on Top Layer And Track (1096.297mil,1124.842mil)(1096.637mil,1125.182mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7524.375mil|Location2.X=7535.625mil|Location1.Y=2378.47mil|Location2.Y=2389.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7524.375mil|Location2.X=7535.625mil|Location1.Y=2378.47mil|Location2.Y=2389.72mil|Absolute=True">Clearance Constraint: (8.189mil &lt; 10mil) Between Track (5875mil,465mil)(6965mil,465mil) on Int2 (Sign) And Via (5980mil,490mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3PYWW23QMJJSFEK4PVDZ2KCTNDNZSCOESWMQ1BBNM4PQECCNRFIJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=11.811mil) (InNetClass('HF')),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2692.21mil|Location2.Y=2701.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2692.21mil|Location2.Y=2701.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-10(5188.819mil,805.472mil) on Bottom Layer And Track (5204.567mil,760.433mil)(5204.567mil,805.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.914mil|Location2.X=6736.038mil|Location1.Y=2766.619mil|Location2.Y=2775.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.914mil|Location2.X=6736.038mil|Location1.Y=2766.619mil|Location2.Y=2775.743mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-2(5188.819mil,864.528mil) on Bottom Layer And Track (5172.008mil,860.118mil)(5173.071mil,861.181mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.914mil|Location2.X=6736.038mil|Location1.Y=2766.619mil|Location2.Y=2775.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.914mil|Location2.X=6736.038mil|Location1.Y=2766.619mil|Location2.Y=2775.743mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-2(5188.819mil,864.528mil) on Bottom Layer And Track (5173.071mil,861.181mil)(5173.071mil,864.528mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2788.666mil|Location2.Y=2797.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2788.666mil|Location2.Y=2797.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR1-2(5188.819mil,864.528mil) on Bottom Layer And Track (5204.567mil,864.528mil)(5204.567mil,894.142mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-10(3302.756mil,679.055mil) on Top Layer And Track (3318.504mil,679.055mil)(3318.504mil,708.504mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4840.851mil|Location2.X=4849.975mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4840.851mil|Location2.X=4849.975mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-2(3302.756mil,620mil) on Top Layer And Track (3235.591mil,620mil)(3287.008mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2506.737mil|Location2.Y=2515.861mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR2-2(3302.756mil,620mil) on Top Layer And Track (3318.504mil,586.299mil)(3318.504mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4856.091mil|Location2.X=4865.215mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4856.091mil|Location2.X=4865.215mil|Location1.Y=2603.194mil|Location2.Y=2612.318mil|Absolute=True">Clearance Constraint: (7.828mil &lt; 7.874mil) Between Pad IC6_MOTOR2-9(3318.504mil,679.055mil) on Top Layer And Track (3303.661mil,670mil)(3303.661mil,838.661mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.843mil|Location2.X=6737.967mil|Location1.Y=3683.666mil|Location2.Y=3692.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.843mil|Location2.X=6737.967mil|Location1.Y=3683.666mil|Location2.Y=3692.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-10(5190.748mil,1759.528mil) on Bottom Layer And Track (5175mil,1759.528mil)(5175mil,1802.559mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.843mil|Location2.X=6737.967mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.843mil|Location2.X=6737.967mil|Location1.Y=3587.21mil|Location2.Y=3596.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-2(5190.748mil,1700.472mil) on Bottom Layer And Track (5175mil,1666.772mil)(5175mil,1700.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6743.529mil|Location2.X=6752.653mil|Location1.Y=3605.91mil|Location2.Y=3615.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6743.529mil|Location2.X=6752.653mil|Location1.Y=3605.91mil|Location2.Y=3615.034mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR3-2(5190.748mil,1700.472mil) on Bottom Layer And Track (5206.496mil,1700.472mil)(5207.559mil,1699.409mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4897.033mil|Location2.X=4906.157mil|Location1.Y=3573.666mil|Location2.Y=3582.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4897.033mil|Location2.X=4906.157mil|Location1.Y=3573.666mil|Location2.Y=3582.79mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-10(3344.252mil,1649.528mil) on Top Layer And Track (3360mil,1649.528mil)(3360mil,1674.624mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.347mil|Location2.X=4891.471mil|Location1.Y=3498.784mil|Location2.Y=3507.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.347mil|Location2.X=4891.471mil|Location1.Y=3498.784mil|Location2.Y=3507.908mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-2(3344.252mil,1590.472mil) on Top Layer And Track (3327.441mil,1594.409mil)(3328.504mil,1593.346mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.347mil|Location2.X=4891.471mil|Location1.Y=3495.91mil|Location2.Y=3505.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.347mil|Location2.X=4891.471mil|Location1.Y=3495.91mil|Location2.Y=3505.034mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-2(3344.252mil,1590.472mil) on Top Layer And Track (3328.504mil,1590.472mil)(3328.504mil,1593.346mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4897.033mil|Location2.X=4906.157mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4897.033mil|Location2.X=4906.157mil|Location1.Y=3477.21mil|Location2.Y=3486.334mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Pad IC6_MOTOR4-2(3344.252mil,1590.472mil) on Top Layer And Track (3360mil,1560mil)(3360mil,1590.472mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.281mil|Location2.X=4850.405mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.281mil|Location2.X=4850.405mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3235.591mil,620mil)(3287.008mil,620mil) on Top Layer And Track (3302.756mil,457.244mil)(3302.756mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.281mil|Location2.X=4850.405mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.281mil|Location2.X=4850.405mil|Location1.Y=2525.438mil|Location2.Y=2534.562mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3235.591mil,620mil)(3287.008mil,620mil) on Top Layer And Track (3302.756mil,620mil)(3303.615mil,619.141mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.107mil|Location2.X=4864.231mil|Location1.Y=2491.737mil|Location2.Y=2500.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.107mil|Location2.X=4864.231mil|Location1.Y=2491.737mil|Location2.Y=2500.861mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3302.756mil,457.244mil)(3302.756mil,620mil) on Top Layer And Track (3318.504mil,586.299mil)(3318.504mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.107mil|Location2.X=4864.231mil|Location1.Y=2491.737mil|Location2.Y=2500.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.107mil|Location2.X=4864.231mil|Location1.Y=2491.737mil|Location2.Y=2500.861mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3302.756mil,457.244mil)(3302.756mil,620mil) on Top Layer And Track (3318.504mil,586.299mil)(3324.362mil,580.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2524.579mil|Location2.Y=2533.703mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.536mil|Location2.X=4864.66mil|Location1.Y=2524.579mil|Location2.Y=2533.703mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Track (3302.756mil,620mil)(3303.615mil,619.141mil) on Top Layer And Track (3318.504mil,586.299mil)(3318.504mil,620mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.56mil|Location2.X=4864.684mil|Location1.Y=2584.493mil|Location2.Y=2593.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.56mil|Location2.X=4864.684mil|Location1.Y=2584.493mil|Location2.Y=2593.617mil|Absolute=True">Clearance Constraint: (6.765mil &lt; 7.874mil) Between Track (3303.661mil,670mil)(3303.661mil,838.661mil) on Top Layer And Track (3318.504mil,679.055mil)(3318.504mil,708.504mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.56mil|Location2.X=4864.684mil|Location1.Y=2613.942mil|Location2.Y=2623.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4855.56mil|Location2.X=4864.684mil|Location1.Y=2613.942mil|Location2.Y=2623.066mil|Absolute=True">Clearance Constraint: (6.765mil &lt; 7.874mil) Between Track (3303.661mil,670mil)(3303.661mil,838.661mil) on Top Layer And Track (3318.504mil,708.504mil)(3325mil,715mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.777mil|Location2.X=4891.901mil|Location1.Y=3495.91mil|Location2.Y=3505.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.777mil|Location2.X=4891.901mil|Location1.Y=3495.91mil|Location2.Y=3505.034mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3328.504mil,1590.472mil)(3328.504mil,1593.346mil) on Top Layer And Track (3344.252mil,1450.748mil)(3344.252mil,1590.472mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3465.438mil|Location2.Y=3474.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3465.438mil|Location2.Y=3474.562mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3344.252mil,1450.748mil)(3344.252mil,1590.472mil) on Top Layer And Track (3360mil,1560mil)(3360mil,1590.472mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3465.438mil|Location2.Y=3474.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3465.438mil|Location2.Y=3474.562mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3344.252mil,1450.748mil)(3344.252mil,1590.472mil) on Top Layer And Track (3360mil,1560mil)(3375mil,1545mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3580.062mil|Location2.Y=3589.186mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3580.062mil|Location2.Y=3589.186mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3344.252mil,1649.528mil)(3344.252mil,1764.252mil) on Top Layer And Track (3360mil,1649.528mil)(3360mil,1674.624mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3580.062mil|Location2.Y=3589.186mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896.603mil|Location2.X=4905.727mil|Location1.Y=3580.062mil|Location2.Y=3589.186mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (3344.252mil,1649.528mil)(3344.252mil,1764.252mil) on Top Layer And Track (3360mil,1674.624mil)(3365mil,1679.624mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3707.997mil|Location2.Y=3717.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3707.997mil|Location2.Y=3717.121mil|Absolute=True">Clearance Constraint: (6.922mil &lt; 7.874mil) Between Track (5157.559mil,1820mil)(5175mil,1802.559mil) on Bottom Layer And Track (5190mil,1760.276mil)(5190mil,1895mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6729.273mil|Location2.X=6738.397mil|Location1.Y=3572.209mil|Location2.Y=3581.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6729.273mil|Location2.X=6738.397mil|Location1.Y=3572.209mil|Location2.Y=3581.334mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5170mil,1661.772mil)(5175mil,1666.772mil) on Bottom Layer And Track (5190.748mil,1644.252mil)(5190.748mil,1700.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6727.344mil|Location2.X=6736.468mil|Location1.Y=2769.966mil|Location2.Y=2779.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6727.344mil|Location2.X=6736.468mil|Location1.Y=2769.966mil|Location2.Y=2779.09mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5173.071mil,861.181mil)(5173.071mil,864.528mil) on Bottom Layer And Track (5188.819mil,864.528mil)(5189.678mil,865.387mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6729.273mil|Location2.X=6738.397mil|Location1.Y=3572.209mil|Location2.Y=3581.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6729.273mil|Location2.X=6738.397mil|Location1.Y=3572.209mil|Location2.Y=3581.334mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5175mil,1666.772mil)(5175mil,1700.472mil) on Bottom Layer And Track (5190.748mil,1644.252mil)(5190.748mil,1700.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3665.714mil|Location2.Y=3674.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3665.714mil|Location2.Y=3674.838mil|Absolute=True">Clearance Constraint: (6.922mil &lt; 7.874mil) Between Track (5175mil,1759.528mil)(5175mil,1802.559mil) on Bottom Layer And Track (5190mil,1760.276mil)(5190.748mil,1759.528mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3665.714mil|Location2.Y=3674.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6728.899mil|Location2.X=6738.023mil|Location1.Y=3665.714mil|Location2.Y=3674.838mil|Absolute=True">Clearance Constraint: (6.922mil &lt; 7.874mil) Between Track (5175mil,1759.528mil)(5175mil,1802.559mil) on Bottom Layer And Track (5190mil,1760.276mil)(5190mil,1895mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2695.287mil|Location2.Y=2704.411mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2695.287mil|Location2.Y=2704.411mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5188.819mil,693.394mil)(5188.819mil,789.849mil) on Bottom Layer And Track (5204.567mil,760.433mil)(5204.567mil,805.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2665.871mil|Location2.Y=2674.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2665.871mil|Location2.Y=2674.995mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5188.819mil,693.394mil)(5188.819mil,789.849mil) on Bottom Layer And Track (5204.567mil,760.433mil)(5216.693mil,748.307mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2695.287mil|Location2.Y=2704.411mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.17mil|Location2.X=6750.294mil|Location1.Y=2695.287mil|Location2.Y=2704.411mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5188.819mil,789.849mil)(5188.819mil,805.472mil) on Bottom Layer And Track (5204.567mil,760.433mil)(5204.567mil,805.472mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2770.825mil|Location2.Y=2779.949mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2770.825mil|Location2.Y=2779.949mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Track (5188.819mil,864.528mil)(5189.678mil,865.387mil) on Bottom Layer And Track (5204.567mil,864.528mil)(5204.567mil,894.142mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2770.825mil|Location2.Y=2779.949mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2770.825mil|Location2.Y=2779.949mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Track (5189.678mil,865.387mil)(5189.678mil,989.678mil) on Bottom Layer And Track (5204.567mil,864.528mil)(5204.567mil,894.142mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2799.58mil|Location2.Y=2808.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6741.599mil|Location2.X=6750.723mil|Location1.Y=2799.58mil|Location2.Y=2808.704mil|Absolute=True">Clearance Constraint: (6.811mil &lt; 7.874mil) Between Track (5189.678mil,865.387mil)(5189.678mil,989.678mil) on Bottom Layer And Track (5204.567mil,894.142mil)(5210.425mil,900mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6743.099mil|Location2.X=6752.223mil|Location1.Y=3605.91mil|Location2.Y=3615.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6743.099mil|Location2.X=6752.223mil|Location1.Y=3605.91mil|Location2.Y=3615.034mil|Absolute=True">Clearance Constraint: (7.67mil &lt; 7.874mil) Between Track (5190.748mil,1644.252mil)(5190.748mil,1700.472mil) on Bottom Layer And Track (5206.496mil,1700.472mil)(5207.559mil,1699.409mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXURQAIY3FM23JMQDGIOEE1RNQP3O0S1HNBOPLPI4QRTXUCHC2G3P"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7529.189mil|Location2.X=7691.756mil|Location1.Y=2516.079mil|Location2.Y=2620.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7529.189mil|Location2.X=7691.756mil|Location1.Y=2516.079mil|Location2.Y=2620.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (5995mil,695mil) from Top Layer to Bottom Layer And Pad D15_MOTOR1-2(6108.228mil,640mil) on Bottom Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2546.297mil|Location2.X=2746.637mil|Location1.Y=2934.843mil|Location2.Y=3115.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2546.297mil|Location2.X=2746.637mil|Location1.Y=2934.843mil|Location2.Y=3115.497mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Track (1096.297mil,1124.842mil)(1096.637mil,1125.182mil) on Top Layer And Pad U2-9(1096.637mil,1105.497mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZYN4POMD2XRGNVDYS1QKG5DMMLIOVLNC4UZQJTLOG1EWKVBGF0XL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=6.156mil) (Max=6.269mil) (Preferred=6.269mil) (InNetClass('HF'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5372.825mil|Location2.X=5395.485mil|Location1.Y=2253.5mil|Location2.Y=2266.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5372.825mil|Location2.X=5395.485mil|Location1.Y=2253.5mil|Location2.Y=2266.5mil|Absolute=True">Width Constraint: Track (3796.209mil,350mil)(3862.441mil,350mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5372.825mil|Location2.X=5395.485mil|Location1.Y=2353.5mil|Location2.Y=2366.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5372.825mil|Location2.X=5395.485mil|Location1.Y=2353.5mil|Location2.Y=2366.5mil|Absolute=True">Width Constraint: Track (3796.209mil,450mil)(3862.441mil,450mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5373.106mil|Location2.X=5395.766mil|Location1.Y=2698.5mil|Location2.Y=2711.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5373.106mil|Location2.X=5395.766mil|Location1.Y=2698.5mil|Location2.Y=2711.5mil|Absolute=True">Width Constraint: Track (3796.772mil,795mil)(3862.441mil,795mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5373.106mil|Location2.X=5395.766mil|Location1.Y=2798.5mil|Location2.Y=2811.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5373.106mil|Location2.X=5395.766mil|Location1.Y=2798.5mil|Location2.Y=2811.5mil|Absolute=True">Width Constraint: Track (3796.772mil,895mil)(3862.441mil,895mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5378.106mil|Location2.X=5400.766mil|Location1.Y=3643.5mil|Location2.Y=3656.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5378.106mil|Location2.X=5400.766mil|Location1.Y=3643.5mil|Location2.Y=3656.5mil|Absolute=True">Width Constraint: Track (3801.772mil,1740mil)(3867.441mil,1740mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5378.106mil|Location2.X=5400.766mil|Location1.Y=3743.5mil|Location2.Y=3756.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5378.106mil|Location2.X=5400.766mil|Location1.Y=3743.5mil|Location2.Y=3756.5mil|Absolute=True">Width Constraint: Track (3801.772mil,1840mil)(3867.441mil,1840mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5383.106mil|Location2.X=5405.766mil|Location1.Y=3198.5mil|Location2.Y=3211.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5383.106mil|Location2.X=5405.766mil|Location1.Y=3198.5mil|Location2.Y=3211.5mil|Absolute=True">Width Constraint: Track (3806.772mil,1295mil)(3872.441mil,1295mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5383.106mil|Location2.X=5405.766mil|Location1.Y=3298.5mil|Location2.Y=3311.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5383.106mil|Location2.X=5405.766mil|Location1.Y=3298.5mil|Location2.Y=3311.5mil|Absolute=True">Width Constraint: Track (3806.772mil,1395mil)(3872.441mil,1395mil) on Top Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7218.106mil|Location2.X=7240.766mil|Location1.Y=3478.5mil|Location2.Y=3491.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7218.106mil|Location2.X=7240.766mil|Location1.Y=3478.5mil|Location2.Y=3491.5mil|Absolute=True">Width Constraint: Track (5641.772mil,1575mil)(5707.441mil,1575mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7218.106mil|Location2.X=7240.766mil|Location1.Y=3578.5mil|Location2.Y=3591.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7218.106mil|Location2.X=7240.766mil|Location1.Y=3578.5mil|Location2.Y=3591.5mil|Absolute=True">Width Constraint: Track (5641.772mil,1675mil)(5707.441mil,1675mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7223.106mil|Location2.X=7245.766mil|Location1.Y=3913.5mil|Location2.Y=3926.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7223.106mil|Location2.X=7245.766mil|Location1.Y=3913.5mil|Location2.Y=3926.5mil|Absolute=True">Width Constraint: Track (5646.772mil,2010mil)(5712.441mil,2010mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7223.106mil|Location2.X=7245.766mil|Location1.Y=4013.5mil|Location2.Y=4026.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7223.106mil|Location2.X=7245.766mil|Location1.Y=4013.5mil|Location2.Y=4026.5mil|Absolute=True">Width Constraint: Track (5646.772mil,2110mil)(5712.441mil,2110mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7228.106mil|Location2.X=7250.766mil|Location1.Y=2608.5mil|Location2.Y=2621.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7228.106mil|Location2.X=7250.766mil|Location1.Y=2608.5mil|Location2.Y=2621.5mil|Absolute=True">Width Constraint: Track (5651.772mil,705mil)(5717.441mil,705mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7228.59mil|Location2.X=7251.25mil|Location1.Y=2509.251mil|Location2.Y=2522.251mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7228.59mil|Location2.X=7251.25mil|Location1.Y=2509.251mil|Location2.Y=2522.251mil|Absolute=True">Width Constraint: Track (5652.523mil,605.751mil)(5717.657mil,605.751mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.106mil|Location2.X=7255.766mil|Location1.Y=2938.5mil|Location2.Y=2951.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.106mil|Location2.X=7255.766mil|Location1.Y=2938.5mil|Location2.Y=2951.5mil|Absolute=True">Width Constraint: Track (5656.772mil,1035mil)(5722.441mil,1035mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.106mil|Location2.X=7255.766mil|Location1.Y=3038.5mil|Location2.Y=3051.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.106mil|Location2.X=7255.766mil|Location1.Y=3038.5mil|Location2.Y=3051.5mil|Absolute=True">Width Constraint: Track (5656.772mil,1135mil)(5722.441mil,1135mil) on Bottom Layer Actual Width = 10mil, Target Width = 6.156mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID5XZVUOSMJSXBO0LVTWHESYY0AN0J0NQJGWRGX1GYXUUZMD32LBBB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=10mil) (Max=30mil) (Preferred=30mil) (InNetClass('PWR'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2666.173mil|Location2.X=2679.141mil|Location1.Y=2971.549mil|Location2.Y=2980.705mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2666.173mil|Location2.X=2679.141mil|Location1.Y=2971.549mil|Location2.Y=2980.705mil|Absolute=True">Width Constraint: Track (1096.637mil,1066.127mil)(1144.865mil,1066.127mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.419mil|Location2.X=3356.123mil|Location1.Y=2899.419mil|Location2.Y=2908.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.419mil|Location2.X=3356.123mil|Location1.Y=2899.419mil|Location2.Y=2908.575mil|Absolute=True">Width Constraint: Track (1795mil,990mil)(1802.994mil,997.994mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3350.322mil|Location2.X=3362.026mil|Location1.Y=2914.028mil|Location2.Y=2923.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3350.322mil|Location2.X=3362.026mil|Location1.Y=2914.028mil|Location2.Y=2923.184mil|Absolute=True">Width Constraint: Track (1802.994mil,1006.7mil)(1806.806mil,1010.512mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3348.416mil|Location2.X=3357.572mil|Location1.Y=2907.769mil|Location2.Y=2917.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3348.416mil|Location2.X=3357.572mil|Location1.Y=2907.769mil|Location2.Y=2917.522mil|Absolute=True">Width Constraint: Track (1802.994mil,997.994mil)(1802.994mil,1006.7mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.671mil|Location2.X=3367.639mil|Location1.Y=2915.934mil|Location2.Y=2925.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.671mil|Location2.X=3367.639mil|Location1.Y=2915.934mil|Location2.Y=2925.09mil|Absolute=True">Width Constraint: Track (1806.806mil,1010.512mil)(1811.693mil,1010.512mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.823mil|Location2.X=3369.598mil|Location1.Y=3171.131mil|Location2.Y=3180.287mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.823mil|Location2.X=3369.598mil|Location1.Y=3171.131mil|Location2.Y=3180.287mil|Absolute=True">Width Constraint: Track (1811.693mil,1266.417mil)(1813.11mil,1265mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3190.603mil|Location2.Y=3199.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3190.603mil|Location2.Y=3199.759mil|Absolute=True">Width Constraint: Track (1811.693mil,1286.102mil)(1813.536mil,1284.259mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3367.768mil|Location2.Y=3376.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3367.768mil|Location2.Y=3376.924mil|Absolute=True">Width Constraint: Track (1811.693mil,1463.268mil)(1813.536mil,1461.425mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3387.453mil|Location2.Y=3396.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.037mil|Location2.X=3369.811mil|Location1.Y=3387.453mil|Location2.Y=3396.609mil|Absolute=True">Width Constraint: Track (1811.693mil,1482.953mil)(1813.536mil,1481.11mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.977mil|Location2.X=3394.945mil|Location1.Y=3170.422mil|Location2.Y=3179.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.977mil|Location2.X=3394.945mil|Location1.Y=3170.422mil|Location2.Y=3179.578mil|Absolute=True">Width Constraint: Track (1813.11mil,1265mil)(1860mil,1265mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3373.592mil|Location2.X=3386.56mil|Location1.Y=3189.681mil|Location2.Y=3198.837mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3373.592mil|Location2.X=3386.56mil|Location1.Y=3189.681mil|Location2.Y=3198.837mil|Absolute=True">Width Constraint: Track (1813.536mil,1284.259mil)(1842.804mil,1284.259mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3373.592mil|Location2.X=3386.56mil|Location1.Y=3366.847mil|Location2.Y=3376.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3373.592mil|Location2.X=3386.56mil|Location1.Y=3366.847mil|Location2.Y=3376.003mil|Absolute=True">Width Constraint: Track (1813.536mil,1461.425mil)(1842.804mil,1461.425mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.745mil|Location2.X=3395.713mil|Location1.Y=3386.532mil|Location2.Y=3395.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.745mil|Location2.X=3395.713mil|Location1.Y=3386.532mil|Location2.Y=3395.688mil|Absolute=True">Width Constraint: Track (1813.536mil,1481.11mil)(1861.11mil,1481.11mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3388.259mil|Location2.X=3400.034mil|Location1.Y=3189.648mil|Location2.Y=3198.804mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3388.259mil|Location2.X=3400.034mil|Location1.Y=3189.648mil|Location2.Y=3198.804mil|Absolute=True">Width Constraint: Track (1842.804mil,1284.259mil)(1842.871mil,1284.193mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3388.938mil|Location2.X=3400.713mil|Location1.Y=3366.134mil|Location2.Y=3375.29mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3388.938mil|Location2.X=3400.713mil|Location1.Y=3366.134mil|Location2.Y=3375.29mil|Absolute=True">Width Constraint: Track (1842.804mil,1461.425mil)(1844.229mil,1460mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3396.454mil|Location2.X=3409.422mil|Location1.Y=3189.615mil|Location2.Y=3198.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3396.454mil|Location2.X=3409.422mil|Location1.Y=3189.615mil|Location2.Y=3198.771mil|Absolute=True">Width Constraint: Track (1842.871mil,1284.193mil)(1859.193mil,1284.193mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3397.536mil|Location2.X=3410.504mil|Location1.Y=3365.422mil|Location2.Y=3374.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3397.536mil|Location2.X=3410.504mil|Location1.Y=3365.422mil|Location2.Y=3374.578mil|Absolute=True">Width Constraint: Track (1844.229mil,1460mil)(1860mil,1460mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.678mil|Location2.X=3442.453mil|Location1.Y=3678.985mil|Location2.Y=3688.141mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.678mil|Location2.X=3442.453mil|Location1.Y=3678.985mil|Location2.Y=3688.141mil|Absolute=True">Width Constraint: Track (1885mil,1773.819mil)(1885.512mil,1773.307mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.422mil|Location2.X=3439.578mil|Location1.Y=3706.111mil|Location2.Y=3715.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.422mil|Location2.X=3439.578mil|Location1.Y=3706.111mil|Location2.Y=3715.864mil|Absolute=True">Width Constraint: Track (1885mil,1773.819mil)(1885mil,1827.559mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3451.54mil|Location2.X=3463.244mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3451.54mil|Location2.X=3463.244mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True">Width Constraint: Track (1905.197mil,1773.307mil)(1907.04mil,1775.15mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.462mil|Location2.X=3461.618mil|Location1.Y=3695.206mil|Location2.Y=3704.959mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.462mil|Location2.X=3461.618mil|Location1.Y=3695.206mil|Location2.Y=3704.959mil|Absolute=True">Width Constraint: Track (1907.04mil,1775.15mil)(1907.04mil,1804.418mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.603mil|Location2.X=3464.307mil|Location1.Y=3709.982mil|Location2.Y=3719.138mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.603mil|Location2.X=3464.307mil|Location1.Y=3709.982mil|Location2.Y=3719.138mil|Absolute=True">Width Constraint: Track (1907.04mil,1804.418mil)(1907.323mil,1804.701mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.745mil|Location2.X=3461.901mil|Location1.Y=3736.611mil|Location2.Y=3746.364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.745mil|Location2.X=3461.901mil|Location1.Y=3736.611mil|Location2.Y=3746.364mil|Absolute=True">Width Constraint: Track (1907.323mil,1804.701mil)(1907.323mil,1857.677mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.839mil|Location2.X=3695.995mil|Location1.Y=3662.736mil|Location2.Y=3672.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.839mil|Location2.X=3695.995mil|Location1.Y=3662.736mil|Location2.Y=3672.489mil|Absolute=True">Width Constraint: Track (2141.417mil,1741.321mil)(2141.417mil,1773.307mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.553mil|Location2.X=3718.257mil|Location1.Y=3678.758mil|Location2.Y=3687.914mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.553mil|Location2.X=3718.257mil|Location1.Y=3678.758mil|Location2.Y=3687.914mil|Absolute=True">Width Constraint: Track (2161.102mil,1773.307mil)(2161.16mil,1773.365mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.582mil|Location2.X=3715.738mil|Location1.Y=3705.184mil|Location2.Y=3714.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.582mil|Location2.X=3715.738mil|Location1.Y=3705.184mil|Location2.Y=3714.937mil|Absolute=True">Width Constraint: Track (2161.16mil,1773.365mil)(2161.16mil,1826.16mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.611mil|Location2.X=3718.315mil|Location1.Y=3731.611mil|Location2.Y=3740.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3706.611mil|Location2.X=3718.315mil|Location1.Y=3731.611mil|Location2.Y=3740.767mil|Absolute=True">Width Constraint: Track (2161.16mil,1826.16mil)(2161.218mil,1826.218mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.422mil|Location2.X=3734.578mil|Location1.Y=2815.875mil|Location2.Y=2825.628mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.422mil|Location2.X=3734.578mil|Location1.Y=2815.875mil|Location2.Y=2825.628mil|Absolute=True">Width Constraint: Track (2180mil,885mil)(2180mil,935.905mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.816mil|Location2.X=3737.52mil|Location1.Y=2841.721mil|Location2.Y=2850.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.816mil|Location2.X=3737.52mil|Location1.Y=2841.721mil|Location2.Y=2850.877mil|Absolute=True">Width Constraint: Track (2180mil,935.905mil)(2180.787mil,936.693mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3746.816mil|Location2.X=3758.52mil|Location1.Y=2843.037mil|Location2.Y=2852.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3746.816mil|Location2.X=3758.52mil|Location1.Y=2843.037mil|Location2.Y=2852.193mil|Absolute=True">Width Constraint: Track (2200.472mil,936.693mil)(2202.316mil,938.536mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3747.738mil|Location2.X=3756.894mil|Location1.Y=2878.532mil|Location2.Y=2888.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3747.738mil|Location2.X=3756.894mil|Location1.Y=2878.532mil|Location2.Y=2888.285mil|Absolute=True">Width Constraint: Track (2202.316mil,938.536mil)(2202.316mil,1007.684mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.04mil|Location2.X=3915.815mil|Location1.Y=3749.244mil|Location2.Y=3758.4mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.04mil|Location2.X=3915.815mil|Location1.Y=3749.244mil|Location2.Y=3758.4mil|Absolute=True">Width Constraint: Track (2357.441mil,1845mil)(2359.796mil,1842.645mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.296mil|Location2.X=3916mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.296mil|Location2.X=3916mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True">Width Constraint: Track (2357.953mil,1773.307mil)(2359.796mil,1775.15mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.218mil|Location2.X=3914.374mil|Location1.Y=3714.32mil|Location2.Y=3724.073mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.218mil|Location2.X=3914.374mil|Location1.Y=3714.32mil|Location2.Y=3724.073mil|Absolute=True">Width Constraint: Track (2359.796mil,1775.15mil)(2359.796mil,1842.645mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3923.981mil|Location2.X=3935.685mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3923.981mil|Location2.X=3935.685mil|Location1.Y=3679.651mil|Location2.Y=3688.807mil|Absolute=True">Width Constraint: Track (2377.638mil,1773.307mil)(2379.481mil,1775.15mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3924.903mil|Location2.X=3934.059mil|Location1.Y=3696.565mil|Location2.Y=3706.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3924.903mil|Location2.X=3934.059mil|Location1.Y=3696.565mil|Location2.Y=3706.318mil|Absolute=True">Width Constraint: Track (2379.481mil,1775.15mil)(2379.481mil,1807.136mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3925.893mil|Location2.X=3937.597mil|Location1.Y=3713.548mil|Location2.Y=3722.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3925.893mil|Location2.X=3937.597mil|Location1.Y=3713.548mil|Location2.Y=3722.704mil|Absolute=True">Width Constraint: Track (2379.481mil,1807.136mil)(2381.461mil,1809.116mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4001.8mil|Location2.X=4010.956mil|Location1.Y=2859.457mil|Location2.Y=2869.21mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4001.8mil|Location2.X=4010.956mil|Location1.Y=2859.457mil|Location2.Y=2869.21mil|Absolute=True">Width Constraint: Track (2456.378mil,936.693mil)(2456.378mil,971.378mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4011.111mil|Location2.X=4022.815mil|Location1.Y=2886.111mil|Location2.Y=2895.267mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4011.111mil|Location2.X=4022.815mil|Location1.Y=2886.111mil|Location2.Y=2895.267mil|Absolute=True">Width Constraint: Track (2456.378mil,971.378mil)(2475mil,990mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.385mil|Location2.X=4033.089mil|Location1.Y=2786.385mil|Location2.Y=2795.541mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.385mil|Location2.X=4033.089mil|Location1.Y=2786.385mil|Location2.Y=2795.541mil|Absolute=True">Width Constraint: Track (2475.93mil,880.93mil)(2475.997mil,880.997mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.385mil|Location2.X=4033.16mil|Location1.Y=2841.096mil|Location2.Y=2850.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.385mil|Location2.X=4033.16mil|Location1.Y=2841.096mil|Location2.Y=2850.252mil|Absolute=True">Width Constraint: Track (2475.93mil,935.707mil)(2475.997mil,935.64mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.419mil|Location2.X=4030.575mil|Location1.Y=2813.74mil|Location2.Y=2823.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.419mil|Location2.X=4030.575mil|Location1.Y=2813.74mil|Location2.Y=2823.494mil|Absolute=True">Width Constraint: Track (2475.997mil,880.997mil)(2475.997mil,935.64mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.777mil|Location2.X=4073.481mil|Location1.Y=2843.037mil|Location2.Y=2852.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.777mil|Location2.X=4073.481mil|Location1.Y=2843.037mil|Location2.Y=2852.193mil|Absolute=True">Width Constraint: Track (2515.433mil,936.693mil)(2517.276mil,938.536mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4062.698mil|Location2.X=4071.854mil|Location1.Y=2868.328mil|Location2.Y=2878.081mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4062.698mil|Location2.X=4071.854mil|Location1.Y=2868.328mil|Location2.Y=2878.081mil|Absolute=True">Width Constraint: Track (2517.276mil,938.536mil)(2517.276mil,987.276mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064.06mil|Location2.X=4075.764mil|Location1.Y=2894.06mil|Location2.Y=2903.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064.06mil|Location2.X=4075.764mil|Location1.Y=2894.06mil|Location2.Y=2903.216mil|Absolute=True">Width Constraint: Track (2517.276mil,987.276mil)(2520mil,990mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.781mil|Location2.X=4151.485mil|Location1.Y=3166.844mil|Location2.Y=3176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.781mil|Location2.X=4151.485mil|Location1.Y=3166.844mil|Location2.Y=3176mil|Absolute=True">Width Constraint: Track (2577.937mil,1245mil)(2610.78mil,1277.843mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4161.682mil|Location2.X=4174.65mil|Location1.Y=3210.422mil|Location2.Y=3219.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4161.682mil|Location2.X=4174.65mil|Location1.Y=3210.422mil|Location2.Y=3219.578mil|Absolute=True">Width Constraint: Track (2585mil,1305mil)(2647.52mil,1305mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.918mil|Location2.X=4166.886mil|Location1.Y=3390.422mil|Location2.Y=3399.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.918mil|Location2.X=4166.886mil|Location1.Y=3390.422mil|Location2.Y=3399.578mil|Absolute=True">Width Constraint: Track (2600mil,1485mil)(2616.992mil,1485mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4171.977mil|Location2.X=4184.945mil|Location1.Y=2935.422mil|Location2.Y=2944.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4171.977mil|Location2.X=4184.945mil|Location1.Y=2935.422mil|Location2.Y=2944.578mil|Absolute=True">Width Constraint: Track (2605mil,1030mil)(2648.11mil,1030mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.202mil|Location2.X=4165.358mil|Location1.Y=3183.265mil|Location2.Y=3193.018mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.202mil|Location2.X=4165.358mil|Location1.Y=3183.265mil|Location2.Y=3193.018mil|Absolute=True">Width Constraint: Track (2610.78mil,1277.843mil)(2610.78mil,1277.843mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.41mil|Location2.X=4171.114mil|Location1.Y=3186.473mil|Location2.Y=3195.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.41mil|Location2.X=4171.114mil|Location1.Y=3186.473mil|Location2.Y=3195.629mil|Absolute=True">Width Constraint: Track (2610.78mil,1277.843mil)(2617.196mil,1284.259mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.963mil|Location2.X=4190.103mil|Location1.Y=2955.132mil|Location2.Y=2964.632mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.963mil|Location2.X=4190.103mil|Location1.Y=2955.132mil|Location2.Y=2964.632mil|Absolute=True">Width Constraint: Track (2615.118mil,1049.882mil)(2648.307mil,1049.882mil) on Top Layer Actual Width = 6.5mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4162.516mil|Location2.X=4174.291mil|Location1.Y=3390.32mil|Location2.Y=3399.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4162.516mil|Location2.X=4174.291mil|Location1.Y=3390.32mil|Location2.Y=3399.476mil|Absolute=True">Width Constraint: Track (2616.992mil,1485mil)(2617.196mil,1484.796mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.252mil|Location2.X=4190.22mil|Location1.Y=3189.681mil|Location2.Y=3198.837mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.252mil|Location2.X=4190.22mil|Location1.Y=3189.681mil|Location2.Y=3198.837mil|Absolute=True">Width Constraint: Track (2617.196mil,1284.259mil)(2646.464mil,1284.259mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.252mil|Location2.X=4190.22mil|Location1.Y=3390.218mil|Location2.Y=3399.374mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.252mil|Location2.X=4190.22mil|Location1.Y=3390.218mil|Location2.Y=3399.374mil|Absolute=True">Width Constraint: Track (2617.196mil,1484.796mil)(2646.464mil,1484.796mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.807mil|Location2.X=4204.512mil|Location1.Y=3190.603mil|Location2.Y=3199.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.807mil|Location2.X=4204.512mil|Location1.Y=3190.603mil|Location2.Y=3199.759mil|Absolute=True">Width Constraint: Track (2646.464mil,1284.259mil)(2648.307mil,1286.102mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.807mil|Location2.X=4204.582mil|Location1.Y=3389.296mil|Location2.Y=3398.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.807mil|Location2.X=4204.582mil|Location1.Y=3389.296mil|Location2.Y=3398.452mil|Absolute=True">Width Constraint: Track (2646.464mil,1484.796mil)(2648.307mil,1482.953mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4193.335mil|Location2.X=4205.039mil|Location1.Y=3210.816mil|Location2.Y=3219.972mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4193.335mil|Location2.X=4205.039mil|Location1.Y=3210.816mil|Location2.Y=3219.972mil|Absolute=True">Width Constraint: Track (2647.52mil,1305mil)(2648.307mil,1305.787mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4193.631mil|Location2.X=4205.335mil|Location1.Y=2935.52mil|Location2.Y=2944.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4193.631mil|Location2.X=4205.335mil|Location1.Y=2935.52mil|Location2.Y=2944.676mil|Absolute=True">Width Constraint: Track (2648.11mil,1030mil)(2648.307mil,1030.197mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4211.633mil|Location2.X=4224.601mil|Location1.Y=3408.06mil|Location2.Y=3417.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4211.633mil|Location2.X=4224.601mil|Location1.Y=3408.06mil|Location2.Y=3417.216mil|Absolute=True">Width Constraint: Track (2648.307mil,1502.638mil)(2684.116mil,1502.638mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4194.467mil|Location2.X=4206.171mil|Location1.Y=3605.648mil|Location2.Y=3614.804mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4194.467mil|Location2.X=4206.171mil|Location1.Y=3605.648mil|Location2.Y=3614.804mil|Absolute=True">Width Constraint: Track (2648.307mil,1699.488mil)(2649.783mil,1700.965mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4227.075mil|Location2.X=4240.043mil|Location1.Y=3606.387mil|Location2.Y=3615.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4227.075mil|Location2.X=4240.043mil|Location1.Y=3606.387mil|Location2.Y=3615.543mil|Absolute=True">Width Constraint: Track (2649.783mil,1700.965mil)(2713.524mil,1700.965mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.857mil|Location2.X=4247.631mil|Location1.Y=3401.741mil|Location2.Y=3410.897mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.857mil|Location2.X=4247.631mil|Location1.Y=3401.741mil|Location2.Y=3410.897mil|Absolute=True">Width Constraint: Track (2684.116mil,1502.638mil)(2696.754mil,1490mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4243.799mil|Location2.X=4256.767mil|Location1.Y=3395.422mil|Location2.Y=3404.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4243.799mil|Location2.X=4256.767mil|Location1.Y=3395.422mil|Location2.Y=3404.578mil|Absolute=True">Width Constraint: Track (2696.754mil,1490mil)(2700mil,1490mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4259.684mil|Location2.X=4271.388mil|Location1.Y=3607.125mil|Location2.Y=3616.281mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4259.684mil|Location2.X=4271.388mil|Location1.Y=3607.125mil|Location2.Y=3616.281mil|Absolute=True">Width Constraint: Track (2713.524mil,1700.965mil)(2715mil,1702.441mil) on Top Layer Actual Width = 6.156mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDR4RTOIS0YWZ3KXUYBG0F52IOAE1DAHC0OKCELECX0SUNIACNBF0N"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=19.685mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5574.533mil|Location2.X=5595.467mil|Location1.Y=3689.532mil|Location2.Y=3710.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5574.533mil|Location2.X=5595.467mil|Location1.Y=3689.532mil|Location2.Y=3710.468mil|Absolute=True">Hole To Hole Clearance Constraint: (18.189mil &lt; 19.685mil) Between Via (4020mil,1790mil) from Top Layer to Bottom Layer And Via (4050mil,1790mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5577.033mil|Location2.X=5597.967mil|Location1.Y=2744.532mil|Location2.Y=2765.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5577.033mil|Location2.X=5597.967mil|Location1.Y=2744.532mil|Location2.Y=2765.468mil|Absolute=True">Hole To Hole Clearance Constraint: (13.189mil &lt; 19.685mil) Between Via (4025mil,845mil) from Top Layer to Bottom Layer And Via (4050mil,845mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.532mil|Location2.X=5900.467mil|Location1.Y=3262.032mil|Location2.Y=3282.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.532mil|Location2.X=5900.467mil|Location1.Y=3262.032mil|Location2.Y=3282.967mil|Absolute=True">Hole To Hole Clearance Constraint: (18.603mil &lt; 19.685mil) Between Via (4325mil,1360mil) from Top Layer to Bottom Layer And Via (4355mil,1365mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5869.532mil|Location2.X=5890.467mil|Location1.Y=2342.032mil|Location2.Y=2362.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5869.532mil|Location2.X=5890.467mil|Location1.Y=2342.032mil|Location2.Y=2362.967mil|Absolute=True">Hole To Hole Clearance Constraint: (15.115mil &lt; 19.685mil) Between Via (4325mil,430mil) from Top Layer to Bottom Layer And Via (4335mil,455mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6013.58mil|Location2.X=6034.515mil|Location1.Y=3319.927mil|Location2.Y=3340.862mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6013.58mil|Location2.X=6034.515mil|Location1.Y=3319.927mil|Location2.Y=3340.862mil|Absolute=True">Hole To Hole Clearance Constraint: (19.036mil &lt; 19.685mil) Between Via (4473.095mil,1435.788mil) from Top Layer to Bottom Layer And Via (4475mil,1405mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6023.58mil|Location2.X=6044.515mil|Location1.Y=2372.427mil|Location2.Y=2393.362mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6023.58mil|Location2.X=6044.515mil|Location1.Y=2372.427mil|Location2.Y=2393.362mil|Absolute=True">Hole To Hole Clearance Constraint: (14.048mil &lt; 19.685mil) Between Via (4483.095mil,485.788mil) from Top Layer to Bottom Layer And Via (4485mil,460mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6046.08mil|Location2.X=6067.015mil|Location1.Y=3694.927mil|Location2.Y=3715.862mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6046.08mil|Location2.X=6067.015mil|Location1.Y=3694.927mil|Location2.Y=3715.862mil|Absolute=True">Hole To Hole Clearance Constraint: (19.133mil &lt; 19.685mil) Between Via (4505mil,1780mil) from Top Layer to Bottom Layer And Via (4508.095mil,1810.788mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6294.533mil|Location2.X=6315.467mil|Location1.Y=3009.532mil|Location2.Y=3030.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6294.533mil|Location2.X=6315.467mil|Location1.Y=3009.532mil|Location2.Y=3030.468mil|Absolute=True">Hole To Hole Clearance Constraint: (18.189mil &lt; 19.685mil) Between Via (4755mil,1095mil) from Top Layer to Bottom Layer And Via (4755mil,1125mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8150.782mil|Location2.X=8171.717mil|Location1.Y=3663.282mil|Location2.Y=3684.217mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8150.782mil|Location2.X=8171.717mil|Location1.Y=3663.282mil|Location2.Y=3684.217mil|Absolute=True">Hole To Hole Clearance Constraint: (12.938mil &lt; 19.685mil) Between Via (6602.5mil,1772.5mil) from Top Layer to Bottom Layer And Via (6620mil,1755mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8394.532mil|Location2.X=8415.467mil|Location1.Y=2772.032mil|Location2.Y=2792.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8394.532mil|Location2.X=8415.467mil|Location1.Y=2772.032mil|Location2.Y=2792.967mil|Absolute=True">Hole To Hole Clearance Constraint: (15.115mil &lt; 19.685mil) Between Via (6850mil,885mil) from Top Layer to Bottom Layer And Via (6860mil,860mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDCPOLZPK2BPKTOLT2Q5GFMDTZ3DUW1UTM1TTG45MOYM5TYSL25AFG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8638.13mil|Location2.X=8680.968mil|Location1.Y=4027.776mil|Location2.Y=4093.998mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8638.13mil|Location2.X=8680.968mil|Location1.Y=4027.776mil|Location2.Y=4093.998mil|Absolute=True">Net Antennae: Via (7105.472mil,2135.118mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8638.13mil|Location2.X=8680.968mil|Location1.Y=4071.083mil|Location2.Y=4137.305mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8638.13mil|Location2.X=8680.968mil|Location1.Y=4071.083mil|Location2.Y=4137.305mil|Absolute=True">Net Antennae: Via (7105.472mil,2178.425mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8681.437mil|Location2.X=8724.275mil|Location1.Y=4027.776mil|Location2.Y=4093.998mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8681.437mil|Location2.X=8724.275mil|Location1.Y=4027.776mil|Location2.Y=4093.998mil|Absolute=True">Net Antennae: Via (7148.779mil,2135.118mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8681.437mil|Location2.X=8724.275mil|Location1.Y=4071.083mil|Location2.Y=4137.305mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8681.437mil|Location2.X=8724.275mil|Location1.Y=4071.083mil|Location2.Y=4137.305mil|Absolute=True">Net Antennae: Via (7148.779mil,2178.425mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXIIMTSJRENQHC3CRFF3QVLSP0J0WKXYC0F0VLAEUV55A0IFPLIXJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8063.85mil|Location2.X=8070.099mil|Location1.Y=4685.819mil|Location2.Y=4692.068mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8063.85mil|Location2.X=8070.099mil|Location1.Y=4685.819mil|Location2.Y=4692.068mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Text "C72" (6437mil,2732mil) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRV25WDIC4MHGHZZ0TWCQGBE3GG23XKS5TPVQXOFLWLGOPPZ01TUE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Matched Lengths(Tolerance=100mil) (InxSignalClass('xSignals_U11_U4_MatchLengthsClass_2'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2023.205mil|Location2.X=8712.622mil|Location1.Y=2397.22mil|Location2.Y=3968.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2023.205mil|Location2.X=8712.622mil|Location1.Y=2397.22mil|Location2.Y=3968.409mil|Absolute=True">Matched Net Lengths: Between xSignal(DIO0-NetR44_1_PP1) And xSignal(DIO4-NetR38_1_PP1) Actual Length Difference against xSignal DIO0-NetR44_1_PP1 is: 7499.758mil, Length Tolerance : 100mil.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1708.205mil|Location2.X=8738.213mil|Location1.Y=2198.52mil|Location2.Y=3968.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1708.205mil|Location2.X=8738.213mil|Location1.Y=2198.52mil|Location2.Y=3968.409mil|Absolute=True">Matched Net Lengths: Between xSignal(DIO0-NetR44_1_PP1) And xSignal(DIO5-NetR37_1_PP1) Actual Length Difference against xSignal DIO0-NetR44_1_PP1 is: 7499.758mil, Length Tolerance : 100mil.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

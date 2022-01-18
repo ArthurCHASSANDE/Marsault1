@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=NetR143_2 Pin=U4-77
+Removed Pin From Net: NetName=NetR142_2 Pin=U4-78
+Removed Pin From Net: NetName=NetR141_2 Pin=U4-79
+Removed Pin From Net: NetName=NetR140_2 Pin=U4-80
+Removed Pin From Net: NetName=NetR139_2 Pin=U4-81
+Removed Pin From Net: NetName=NetR138_2 Pin=U4-82
+Removed Pin From Net: NetName=NetR137_2 Pin=U4-85
+Removed Pin From Net: NetName=NetR136_2 Pin=U4-86
+Added Pin To Net: NetName=NetR136_2 Pin=U4-77
+Added Pin To Net: NetName=NetR137_2 Pin=U4-78
+Added Pin To Net: NetName=NetR138_2 Pin=U4-79
+Added Pin To Net: NetName=NetR139_2 Pin=U4-80
+Added Pin To Net: NetName=NetR140_2 Pin=U4-81
+Added Pin To Net: NetName=NetR141_2 Pin=U4-82
+Added Pin To Net: NetName=NetR142_2 Pin=U4-85
+Added Pin To Net: NetName=NetR143_2 Pin=U4-86

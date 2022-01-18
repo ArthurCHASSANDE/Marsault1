@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=NetC61_2 Pin=LS1-1
+Removed Member From Class: ClassName=Buzzer Member=LS1
+Added Component: Designator=J59(534260310)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/534260310_sd.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "6.9mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "53426-0310"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-53426-0310"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/53426-0310?qs=X1mjqRbeMc5HPVciucBIlQ%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC61_2 Pin=J59-3
+Added Pin To Net: NetName=NetJ59_1 Pin=J59-1
+Added Pin To Net: NetName=NetJ59_1 Pin=R116-2
+Added Pin To Net: NetName=NetJ59_1 Pin=U7-6
+Added Net: Name=NetJ59_1
+Added Pin To Net: NetName=NetJ59_2 Pin=J59-2
+Added Pin To Net: NetName=NetJ59_2 Pin=R117-2
+Added Net: Name=NetJ59_2
+Added Member To Class: ClassName=Buzzer Member=Component J59 53426-0310

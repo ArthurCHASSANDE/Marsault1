@@ -1,0 +1,140 @@
+Removed Pin From Net: NetName=+3V3 Pin=C76_MOTOR1-1
+Removed Pin From Net: NetName=GND Pin=C76_MOTOR1-2
+Removed Pin From Net: NetName=+3V3 Pin=C76_MOTOR2-1
+Removed Pin From Net: NetName=GND Pin=C76_MOTOR2-2
+Removed Pin From Net: NetName=+3V3 Pin=C76_MOTOR3-1
+Removed Pin From Net: NetName=GND Pin=C76_MOTOR3-2
+Removed Pin From Net: NetName=+3V3 Pin=C76_MOTOR4-1
+Removed Pin From Net: NetName=GND Pin=C76_MOTOR4-2
+Removed Pin From Net: NetName=NetC30_2 Pin=D12-2
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR1-2
+Removed Pin From Net: NetName=+3V3 Pin=IC4_MOTOR1-3
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR1-5
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR2-2
+Removed Pin From Net: NetName=+3V3 Pin=IC4_MOTOR2-3
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR2-5
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR3-2
+Removed Pin From Net: NetName=+3V3 Pin=IC4_MOTOR3-3
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR3-5
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR4-2
+Removed Pin From Net: NetName=+3V3 Pin=IC4_MOTOR4-3
+Removed Pin From Net: NetName=GND Pin=IC4_MOTOR4-5
+Removed Pin From Net: NetName=GND Pin=R30_MOTOR1-1
+Removed Pin From Net: NetName=GND Pin=R30_MOTOR2-1
+Removed Pin From Net: NetName=GND Pin=R30_MOTOR3-1
+Removed Pin From Net: NetName=GND Pin=R30_MOTOR4-1
+Removed Member From Class: ClassName=MOTOR1 Member=C76_MOTOR1
+Removed Member From Class: ClassName=MOTOR2 Member=C76_MOTOR2
+Removed Member From Class: ClassName=MOTOR3 Member=C76_MOTOR3
+Removed Member From Class: ClassName=MOTOR4 Member=C76_MOTOR4
+Removed Member From Class: ClassName=MOTOR1 Member=IC4_MOTOR1
+Removed Member From Class: ClassName=MOTOR2 Member=IC4_MOTOR2
+Removed Member From Class: ClassName=MOTOR3 Member=IC4_MOTOR3
+Removed Member From Class: ClassName=MOTOR4 Member=IC4_MOTOR4
+Removed Member From Class: ClassName=MOTOR1 Member=R30_MOTOR1
+Removed Member From Class: ClassName=MOTOR2 Member=R30_MOTOR2
+Removed Member From Class: ClassName=MOTOR3 Member=R30_MOTOR3
+Removed Member From Class: ClassName=MOTOR4 Member=R30_MOTOR4
+Removed Member From Class: ClassName=MAIN Member=R60
+Removed Member From Class: ClassName=MAIN Member=R65
+Removed Member From Class: ClassName=MAIN Member=R75
+Removed Member From Class: ClassName=MAIN Member=R82
+Change Component Footprint: Designator=D12 Old Footprint=DIOD-SOD123-2_V New Footprint=FAIR-SOD-523F-2_V
+Change Component Comment : Designator=D12 Old Comment=1N4148W-7-F New Comment=1N4148WT
+Change Managed Component Library Link : Designator=D12 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=F823AD29-621F-44F4-BA98-97744F3C2356 New ItemGUID=31DD35AD-AFC7-4C02-A60C-305BCC004814 Old RevisionGUID=0FCB59B6-6CF2-40FF-8818-FCFF75A61028 New RevisionGUID=151210E2-4126-4ECA-A195-4C4B503255DD
+Change component parameters: Designator = "D12" ("D12"); Footprint = "DIOD-SOD123-2_V"; UniqueID = "\PLDDTGEE\AVHQYTVC" ("\PLDDTGEE\AVHQYTVC")
+Change component parameters (AddParameter): Name = "BVR (IR"; Value = "5 uA)=75 V Min."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "CO"; Value = "4 pF Max."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.fairchildsemi.com/"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.fairchildsemi.com/ds/1N/1N4148WT.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "DatasheetVersion"; Value = "Rev. A2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "IR (VR"; Value = "75 V)=5 uA Max."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Fairchild Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1.2 x 0.8 mm, Height 0.7 mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "SOD-523F-2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = "1N4148WT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Temperature Range"; Value = "-55 to 150 degC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "VF"; Value = "1 V Max."; VariantName = "[No Variations]"
+Added Component: Designator=C?(SAMS-C0603-2_M)
+Add component (AddParameter): Name = "Capacitance"; Value = "0.1µF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Size/Dimension"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://datasheet.ciiva.com/29198/456651-da-01-en-vs-kondensator-0605-29198839.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Nov-10"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Dielectric"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung Electro-Mechanics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.samsungsem.com/global/index.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance (%)"; Value = "±10%"; VariantName = "[No Variations]"
+Added Component: Designator=C?(SAMS-C0603-2_M)
+Add component (AddParameter): Name = "Capacitance"; Value = "0.1µF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Size/Dimension"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://datasheet.ciiva.com/29198/456651-da-01-en-vs-kondensator-0605-29198839.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Nov-10"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Dielectric"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung Electro-Mechanics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.samsungsem.com/global/index.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance (%)"; Value = "±10%"; VariantName = "[No Variations]"
+Added Component: Designator=C?(SAMS-C0603-2_M)
+Add component (AddParameter): Name = "Capacitance"; Value = "0.1µF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Size/Dimension"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://datasheet.ciiva.com/29198/456651-da-01-en-vs-kondensator-0605-29198839.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Nov-10"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Dielectric"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung Electro-Mechanics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.samsungsem.com/global/index.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance (%)"; Value = "±10%"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=shunt_M12_N Pin=C?-1
+Added Pin To Net: NetName=shunt_M34_N Pin=C?-1
+Added Pin To Net: NetName=shunt_SEQ_N Pin=C?-1
+Added Pin To Net: NetName=shunt_M12_P Pin=C?-2
+Added Pin To Net: NetName=shunt_M34_P Pin=C?-2
+Added Pin To Net: NetName=shunt_SEQ_P Pin=C?-2
+Added Pin To Net: NetName=NetC30_2 Pin=D12-1
+Added Pin To Net: NetName=GND Pin=D15_MOTOR1-2
+Added Pin To Net: NetName=GND Pin=D15_MOTOR2-2
+Added Pin To Net: NetName=GND Pin=D15_MOTOR3-2
+Added Pin To Net: NetName=GND Pin=D15_MOTOR4-2
+Added Pin To Net: NetName=GND Pin=D16_MOTOR1-2
+Added Pin To Net: NetName=GND Pin=D16_MOTOR2-2
+Added Pin To Net: NetName=GND Pin=D16_MOTOR3-2
+Added Pin To Net: NetName=GND Pin=D16_MOTOR4-2
+Added Pin To Net: NetName=GND Pin=Q3_MOTOR1-3
+Added Pin To Net: NetName=GND Pin=Q3_MOTOR2-3
+Added Pin To Net: NetName=GND Pin=Q3_MOTOR3-3
+Added Pin To Net: NetName=GND Pin=Q3_MOTOR4-3
+Added Pin To Net: NetName=GND Pin=Q4_MOTOR1-3
+Added Pin To Net: NetName=GND Pin=Q4_MOTOR2-3
+Added Pin To Net: NetName=GND Pin=Q4_MOTOR3-3
+Added Pin To Net: NetName=GND Pin=Q4_MOTOR4-3
+Added Pin To Net: NetName=GND Pin=R27_MOTOR1-1
+Added Pin To Net: NetName=GND Pin=R27_MOTOR2-1
+Added Pin To Net: NetName=GND Pin=R27_MOTOR3-1
+Added Pin To Net: NetName=GND Pin=R27_MOTOR4-1
+Added Pin To Net: NetName=GND Pin=R29_MOTOR1-1
+Added Pin To Net: NetName=GND Pin=R29_MOTOR2-1
+Added Pin To Net: NetName=GND Pin=R29_MOTOR3-1
+Added Pin To Net: NetName=GND Pin=R29_MOTOR4-1
+Added Pin To Net: NetName=NetD12_2 Pin=D12-2
+Added Pin To Net: NetName=NetD12_2 Pin=IC9-9
+Added Net: Name=NetD12_2
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C? 1nF
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C? 1nF
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C? 1nF
+Added Room: Name=Buzzer
+Added Room: Name=FIN_COURSE
+Added Room: Name=MAIN
+Added Room: Name=MEMORIES
+Added Room: Name=MICROCONTROLLER
+Added Room: Name=MOTOR1
+Added Room: Name=MOTOR2
+Added Room: Name=MOTOR3
+Added Room: Name=MOTOR4
+Added Room: Name=POWER SUPPLIES
+Added Room: Name=RADIO
+Added Room: Name=SENSORS

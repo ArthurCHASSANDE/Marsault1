@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=NetC35_MOTOR1_2 Pin=C35_MOTOR1-2
+Removed Pin From Net: NetName=NetC35_MOTOR2_2 Pin=C35_MOTOR2-2
+Removed Pin From Net: NetName=NetC35_MOTOR3_2 Pin=C35_MOTOR3-2
+Removed Pin From Net: NetName=NetC35_MOTOR4_2 Pin=C35_MOTOR4-2
+Added Pin To Net: NetName=GND Pin=C35_MOTOR1-2
+Added Pin To Net: NetName=GND Pin=C35_MOTOR2-2
+Added Pin To Net: NetName=GND Pin=C35_MOTOR3-2
+Added Pin To Net: NetName=GND Pin=C35_MOTOR4-2
+Change Net Name : Old Net Name=NetC35_MOTOR1_2 New Net Name=NetIC4_MOTOR1_4
+Change Net Name : Old Net Name=NetC35_MOTOR2_2 New Net Name=NetIC4_MOTOR2_4
+Change Net Name : Old Net Name=NetC35_MOTOR3_2 New Net Name=NetIC4_MOTOR3_4
+Change Net Name : Old Net Name=NetC35_MOTOR4_2 New Net Name=NetIC4_MOTOR4_4
+Added Member To Class: ClassName=PWR Member=Wire +9V
+Added Room: Name=MEMORIES

@@ -1,0 +1,4 @@
+Removed Member From Class: ClassName=HF Member=NetIC6_MOTOR4_11
+Added Pin To Net: NetName=PWM_M4 Pin=IC6_MOTOR4-11
+Added Pin To Net: NetName=PWM_M4 Pin=R112_MOTOR4-2
+Added Member To Class: ClassName=HF Member=Wire PWM_M4

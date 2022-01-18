@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=\RST Pin=R11-2
+Added Pin To Net: NetName=\RST_ihm Pin=R11-2
+Added Pin To Net: NetName=\RST_ihm Pin=R105-1
+Added Pin To Net: NetName=\RST_ihm Pin=U4-25
+Added Net: Name=\RST_ihm

@@ -1,0 +1,12 @@
+Added Member To Class: ClassName=HF Member=Wire CLK_SD
+Added Member To Class: ClassName=HF Member=Wire CMD_SD
+Added Member To Class: ClassName=HF Member=Wire DATA0_SD
+Added Member To Class: ClassName=HF Member=Wire DATA1_SD
+Added Member To Class: ClassName=HF Member=Wire DATA2_SD
+Added Member To Class: ClassName=HF Member=Wire DATA3_SD
+Added Member To Class: ClassName=HF Member=Wire SDCLK
+Added Member To Class: ClassName=HF Member=Wire SDCMD
+Added Member To Class: ClassName=HF Member=Wire SDDATA0
+Added Member To Class: ClassName=HF Member=Wire SDDATA1
+Added Member To Class: ClassName=HF Member=Wire SDDATA2
+Added Member To Class: ClassName=HF Member=Wire SDDATA3

@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=HOT_R_MOTOR2 Pin=J1-20
+Removed Pin From Net: NetName=HOT_L_MOTOR2 Pin=J1-22
+Removed Pin From Net: NetName=HOT_R_MOTOR4 Pin=J1-26
+Removed Pin From Net: NetName=HOT_L_MOTOR4 Pin=J1-28
+Removed Pin From Net: NetName=HOT_R_MOTOR1 Pin=J1-32
+Removed Pin From Net: NetName=HOT_L_MOTOR1 Pin=J1-34
+Removed Pin From Net: NetName=HOT_R_MOTOR3 Pin=J1-38
+Removed Pin From Net: NetName=HOT_L_MOTOR3 Pin=J1-40
+Added Pin To Net: NetName=HOT_R_MOTOR1 Pin=J1-20
+Added Pin To Net: NetName=HOT_L_MOTOR1 Pin=J1-22
+Added Pin To Net: NetName=HOT_R_MOTOR3 Pin=J1-26
+Added Pin To Net: NetName=HOT_L_MOTOR3 Pin=J1-28
+Added Pin To Net: NetName=HOT_R_MOTOR2 Pin=J1-32
+Added Pin To Net: NetName=HOT_L_MOTOR2 Pin=J1-34
+Added Pin To Net: NetName=HOT_R_MOTOR4 Pin=J1-38
+Added Pin To Net: NetName=HOT_L_MOTOR4 Pin=J1-40
+Added Member To Class: ClassName=FIN_COURSE Member=Component IC10 74HC7540D,112

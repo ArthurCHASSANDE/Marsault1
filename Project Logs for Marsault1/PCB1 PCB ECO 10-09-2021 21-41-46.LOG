@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=INT_IMU Pin=J10-1
+Removed Pin From Net: NetName=DIO5 Pin=J30-1
+Removed Pin From Net: NetName=DIO2 Pin=J31-1
+Removed Pin From Net: NetName=DIO4 Pin=J43-1
+Removed Pin From Net: NetName=DIO1 Pin=J44-1
+Removed Pin From Net: NetName=DIO3 Pin=J52-1
+Removed Pin From Net: NetName=DIO0 Pin=J53-1
+Removed Member From Class: ClassName=MAIN Member=J10
+Removed Member From Class: ClassName=MAIN Member=J30
+Removed Member From Class: ClassName=MAIN Member=J31
+Removed Member From Class: ClassName=MAIN Member=J43
+Removed Member From Class: ClassName=MAIN Member=J44
+Removed Member From Class: ClassName=MAIN Member=J52
+Removed Member From Class: ClassName=MAIN Member=J53

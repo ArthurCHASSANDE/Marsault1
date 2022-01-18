@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C70
+Change Component Designator: OldDesignator=C? NewDesignator=C71
+Change Component Designator: OldDesignator=C? NewDesignator=C72
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C70 1nF
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C72 1nF

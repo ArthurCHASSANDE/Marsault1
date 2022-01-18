@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=RF_MOD Pin=R39-2
+Removed Member From Class: ClassName=RADIO Member=R39
+Added Pin To Net: NetName=RF_MOD Pin=U11-20

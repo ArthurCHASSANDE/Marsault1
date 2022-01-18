@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=EXT_INT_GPS Pin=R22-1
+Removed Pin From Net: NetName=EXT_INT_GPS Pin=U4-28
+Added Pin To Net: NetName=EXT_INT_GPS Pin=IC9-4
+Added Pin To Net: NetName=EXT_INT_GPS Pin=R22-2
+Added Pin To Net: NetName=NetR22_1 Pin=R22-1
+Added Pin To Net: NetName=NetR22_1 Pin=U4-28
+Added Net: Name=NetR22_1

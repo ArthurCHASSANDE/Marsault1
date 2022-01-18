@@ -1,0 +1,12 @@
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C3 CGA3E2X7R1E104K080AA
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component C4 C2012X5R1C226K125AC
+Added Member To Class: ClassName=MAIN Member=Component J1 TSW-102-05-G-S
+Added Member To Class: ClassName=MAIN Member=Component J2 TSW-104-05-T-S
+Added Member To Class: ClassName=Buzzer Member=Component J59 TSW-103-05-G-S
+Added Member To Class: ClassName=SENSORS Member=Component J70 5015
+Added Member To Class: ClassName=SENSORS Member=Component J71 5015
+Added Member To Class: ClassName=SENSORS Member=Component J72 5015
+Added Member To Class: ClassName=SENSORS Member=Component J73 5015
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component R1 ERJ-3EKF1693V
+Added Member To Class: ClassName=POWER SUPPLIES Member=Component R3 ERJ-3EKF1022V
+Added Member To Class: ClassName=PWR Member=Wire NetC3_1

@@ -1,0 +1,17 @@
+Board Information Report
+Filename     : C:\Users\Public\Documents\Altium\Projects\Marsault1\PCB1.PcbDoc
+Date         : 11/01/2022
+Time         : 19:24:31
+Time Elapsed : 00:00:00
+
+General
+    Board Size, 7874.016milsx2755.906mils
+    Components on board, 430
+count : 2
+
+Routing Information
+    Routing completion, 70,90%
+    Connections, 921
+    Connections routed, 653
+    Connections remaining, 268
+count : 4

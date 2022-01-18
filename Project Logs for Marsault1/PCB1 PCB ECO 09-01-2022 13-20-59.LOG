@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=SDDATA0 Pin=J7-1
+Removed Pin From Net: NetName=SDDATA1 Pin=J8-1
+Removed Pin From Net: NetName=SDDATA2 Pin=J20-1
+Removed Pin From Net: NetName=SDDATA3 Pin=J21-1
+Removed Pin From Net: NetName=SDCLK Pin=J28-1
+Removed Pin From Net: NetName=SDCMD Pin=J29-1
+Removed Member From Class: ClassName=MAIN Member=J7
+Removed Member From Class: ClassName=MAIN Member=J8
+Removed Member From Class: ClassName=MAIN Member=J20
+Removed Member From Class: ClassName=MAIN Member=J21
+Removed Member From Class: ClassName=MAIN Member=J28
+Removed Member From Class: ClassName=MAIN Member=J29

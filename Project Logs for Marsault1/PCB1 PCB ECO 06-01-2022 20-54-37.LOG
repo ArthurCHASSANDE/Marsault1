@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=FDC1_CONN Pin=J53-02
+Removed Pin From Net: NetName=FDC2_CONN Pin=J53-04
+Removed Pin From Net: NetName=FDC3_CONN Pin=J53-06
+Removed Pin From Net: NetName=FDC4_CONN Pin=J53-08
+Removed Pin From Net: NetName=FDC5_CONN Pin=J53-10
+Removed Pin From Net: NetName=FDC6_CONN Pin=J53-12
+Removed Pin From Net: NetName=FDC7_CONN Pin=J53-14
+Removed Pin From Net: NetName=FDC8_CONN Pin=J53-16
+Added Pin To Net: NetName=FDC8_CONN Pin=J53-02
+Added Pin To Net: NetName=FDC7_CONN Pin=J53-04
+Added Pin To Net: NetName=FDC6_CONN Pin=J53-06
+Added Pin To Net: NetName=FDC5_CONN Pin=J53-08
+Added Pin To Net: NetName=FDC4_CONN Pin=J53-10
+Added Pin To Net: NetName=FDC3_CONN Pin=J53-12
+Added Pin To Net: NetName=FDC2_CONN Pin=J53-14
+Added Pin To Net: NetName=FDC1_CONN Pin=J53-16

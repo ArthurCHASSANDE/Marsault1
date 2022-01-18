@@ -1,0 +1,17 @@
+Added Member To Class: ClassName=HF Member=Wire MISO
+Added Member To Class: ClassName=HF Member=Wire MOSI
+Added Member To Class: ClassName=HF Member=Wire NetC33_1
+Added Member To Class: ClassName=HF Member=Wire NetC33_2
+Added Member To Class: ClassName=HF Member=Wire NetC34_1
+Added Member To Class: ClassName=HF Member=Wire NetC34_2
+Added Member To Class: ClassName=HF Member=Wire NetC36_1
+Added Member To Class: ClassName=HF Member=Wire NetC36_2
+Added Member To Class: ClassName=HF Member=Wire NetC37_1
+Added Member To Class: ClassName=HF Member=Wire NetJ5_1
+Added Member To Class: ClassName=HF Member=Wire SCK
+Added Room: Name=MAIN
+Added Room: Name=MEMORIES
+Added Room: Name=MICROCONTROLLER
+Added Room: Name=MOTOR4
+Added Room: Name=POWER SUPPLIES
+Added Room: Name=SENSORS

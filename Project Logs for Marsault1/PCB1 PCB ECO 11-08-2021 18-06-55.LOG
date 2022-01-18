@@ -1,0 +1,36 @@
+Removed Pin From Net: NetName=+9V Pin=Q6_MOTOR1-1
+Removed Pin From Net: NetName=+9V Pin=Q6_MOTOR2-1
+Removed Pin From Net: NetName=+9V Pin=Q6_MOTOR3-1
+Removed Pin From Net: NetName=+9V Pin=Q6_MOTOR4-1
+Removed Pin From Net: NetName=+9V Pin=R24_MOTOR1-2
+Removed Pin From Net: NetName=+9V Pin=R24_MOTOR2-2
+Removed Pin From Net: NetName=+9V Pin=R24_MOTOR3-2
+Removed Pin From Net: NetName=+9V Pin=R24_MOTOR4-2
+Removed Pin From Net: NetName=+9V Pin=R28_MOTOR1-2
+Removed Pin From Net: NetName=+9V Pin=R28_MOTOR2-2
+Removed Pin From Net: NetName=+9V Pin=R28_MOTOR3-2
+Removed Pin From Net: NetName=+9V Pin=R28_MOTOR4-2
+Removed Pin From Net: NetName=+9V Pin=R45_MOTOR1-2
+Removed Pin From Net: NetName=+9V Pin=R45_MOTOR2-2
+Removed Pin From Net: NetName=+9V Pin=R45_MOTOR3-2
+Removed Pin From Net: NetName=+9V Pin=R45_MOTOR4-2
+Added Pin To Net: NetName=NetQ6_MOTOR1_1 Pin=Q6_MOTOR1-1
+Added Pin To Net: NetName=NetQ6_MOTOR1_1 Pin=R24_MOTOR1-2
+Added Pin To Net: NetName=NetQ6_MOTOR1_1 Pin=R28_MOTOR1-2
+Added Pin To Net: NetName=NetQ6_MOTOR1_1 Pin=R45_MOTOR1-2
+Added Net: Name=NetQ6_MOTOR1_1
+Added Pin To Net: NetName=NetQ6_MOTOR2_1 Pin=Q6_MOTOR2-1
+Added Pin To Net: NetName=NetQ6_MOTOR2_1 Pin=R24_MOTOR2-2
+Added Pin To Net: NetName=NetQ6_MOTOR2_1 Pin=R28_MOTOR2-2
+Added Pin To Net: NetName=NetQ6_MOTOR2_1 Pin=R45_MOTOR2-2
+Added Net: Name=NetQ6_MOTOR2_1
+Added Pin To Net: NetName=NetQ6_MOTOR3_1 Pin=Q6_MOTOR3-1
+Added Pin To Net: NetName=NetQ6_MOTOR3_1 Pin=R24_MOTOR3-2
+Added Pin To Net: NetName=NetQ6_MOTOR3_1 Pin=R28_MOTOR3-2
+Added Pin To Net: NetName=NetQ6_MOTOR3_1 Pin=R45_MOTOR3-2
+Added Net: Name=NetQ6_MOTOR3_1
+Added Pin To Net: NetName=NetQ6_MOTOR4_1 Pin=Q6_MOTOR4-1
+Added Pin To Net: NetName=NetQ6_MOTOR4_1 Pin=R24_MOTOR4-2
+Added Pin To Net: NetName=NetQ6_MOTOR4_1 Pin=R28_MOTOR4-2
+Added Pin To Net: NetName=NetQ6_MOTOR4_1 Pin=R45_MOTOR4-2
+Added Net: Name=NetQ6_MOTOR4_1

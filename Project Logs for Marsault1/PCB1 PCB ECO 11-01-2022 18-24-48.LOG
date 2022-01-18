@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=NetIC9_21 Pin=J71-1
+Removed Pin From Net: NetName=NetIC9_20 Pin=J73-1
+Removed Member From Class: ClassName=SENSORS Member=J71
+Removed Member From Class: ClassName=SENSORS Member=J73
+Removed Member From Class: ClassName=HF Member=NetR8_1
+Removed Member From Class: ClassName=HF Member=NetR19_1
+Added Pin To Net: NetName=NetJ71_1 Pin=J71-1
+Added Pin To Net: NetName=NetJ71_1 Pin=R19-1
+Added Pin To Net: NetName=NetJ71_1 Pin=U4-34
+Added Net: Name=NetJ71_1
+Added Pin To Net: NetName=NetJ73_1 Pin=J73-1
+Added Pin To Net: NetName=NetJ73_1 Pin=R8-1
+Added Pin To Net: NetName=NetJ73_1 Pin=U4-35
+Added Net: Name=NetJ73_1
+Added Member To Class: ClassName=MAIN Member=Component J71 5015
+Added Member To Class: ClassName=MAIN Member=Component J73 5015
+Added Member To Class: ClassName=HF Member=Wire NetJ71_1
+Added Member To Class: ClassName=HF Member=Wire NetJ73_1

@@ -1,0 +1,63 @@
+Removed Pin From Net: NetName=GND Pin=J59-1
+Removed Pin From Net: NetName=+VBAT_MOTOR2 Pin=J59-2
+Removed Pin From Net: NetName=GND Pin=J60-1
+Removed Pin From Net: NetName=+VBAT_MOTOR1 Pin=J60-2
+Removed Pin From Net: NetName=GND Pin=J61-1
+Removed Pin From Net: NetName=+VBAT Pin=J61-2
+Removed Member From Class: ClassName=POWER SUPPLIES Member=J59
+Removed Member From Class: ClassName=POWER SUPPLIES Member=J60
+Removed Member From Class: ClassName=POWER SUPPLIES Member=J61
+Added Pin To Net: NetName=+VBAT_MOTOR2 Pin=J84-01
+Added Pin To Net: NetName=+VBAT_MOTOR2 Pin=J84-03
+Added Pin To Net: NetName=GND Pin=J84-05
+Added Pin To Net: NetName=GND Pin=J84-07
+Added Pin To Net: NetName=GND Pin=J84-09
+Added Pin To Net: NetName=GND Pin=J84-11
+Added Pin To Net: NetName=GND Pin=J84-13
+Added Pin To Net: NetName=GND Pin=J84-15
+Added Pin To Net: NetName=+VBAT_MOTOR1 Pin=J84-33
+Added Pin To Net: NetName=+VBAT_MOTOR1 Pin=J84-35
+Added Pin To Net: NetName=+VBAT Pin=J84-37
+Added Pin To Net: NetName=+VBAT Pin=J84-39
+Added Pin To Net: NetName=AERO_CON Pin=J84-17
+Added Net: Name=AERO_CON
+Added Pin To Net: NetName=FDC1_CONN Pin=J1-14
+Added Net: Name=FDC1_CONN
+Added Pin To Net: NetName=FDC2_CONN Pin=J1-16
+Added Net: Name=FDC2_CONN
+Added Pin To Net: NetName=FDC3_CONN Pin=J1-18
+Added Net: Name=FDC3_CONN
+Added Pin To Net: NetName=FDC4_CONN Pin=J1-20
+Added Net: Name=FDC4_CONN
+Added Pin To Net: NetName=FDC5_CONN Pin=J1-22
+Added Net: Name=FDC5_CONN
+Added Pin To Net: NetName=FDC6_CONN Pin=J1-24
+Added Net: Name=FDC6_CONN
+Added Pin To Net: NetName=FDC7_CONN Pin=J1-26
+Added Net: Name=FDC7_CONN
+Added Pin To Net: NetName=FDC8_CONN Pin=J1-28
+Added Net: Name=FDC8_CONN
+Added Pin To Net: NetName=MOT1H_CONN Pin=J1-32
+Added Net: Name=MOT1H_CONN
+Added Pin To Net: NetName=MOT1L_CONN Pin=J1-34
+Added Net: Name=MOT1L_CONN
+Added Pin To Net: NetName=MOT2H_CONN Pin=J1-02
+Added Net: Name=MOT2H_CONN
+Added Pin To Net: NetName=MOT2L_CONN Pin=J1-04
+Added Net: Name=MOT2L_CONN
+Added Pin To Net: NetName=MOT3H_CONN Pin=J1-38
+Added Net: Name=MOT3H_CONN
+Added Pin To Net: NetName=MOT3L_CONN Pin=J1-40
+Added Net: Name=MOT3L_CONN
+Added Pin To Net: NetName=MOT4H_CONN Pin=J1-08
+Added Net: Name=MOT4H_CONN
+Added Pin To Net: NetName=MOT4L_CONN Pin=J1-10
+Added Net: Name=MOT4L_CONN
+Added Pin To Net: NetName=TH1_CON_N Pin=J84-21
+Added Net: Name=TH1_CON_N
+Added Pin To Net: NetName=TH1_CON_P Pin=J84-23
+Added Net: Name=TH1_CON_P
+Added Pin To Net: NetName=TH2_CON_N Pin=J84-27
+Added Net: Name=TH2_CON_N
+Added Pin To Net: NetName=TH2_CON_P Pin=J84-29
+Added Net: Name=TH2_CON_P
