@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 16:20:52 On 29/01/2022
+
+Output: HyperLynx (AutoPCB)
+Type  : Exporter Wrapper
+From  : PCB Document [PCB1.PcbDoc]
+   Generated File[PCB1.HYP]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 16:21:02 On 29/01/2022
